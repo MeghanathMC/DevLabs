@@ -2,6 +2,7 @@ import express from 'express';
 import { 
   getProfile, 
   updateProfile, 
+  changePassword,
   uploadAvatar, 
   updateSettings, 
   getPortfolioSettings, 
@@ -19,6 +20,7 @@ router.use(authenticate);
 // Profile management
 router.get('/profile', getProfile);
 router.put('/profile', updateProfile);
+router.put('/change-password', changePassword);
 router.post('/avatar', upload.single('avatar'), uploadAvatar);
 
 // Settings management

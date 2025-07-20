@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
 import { verifyAccessToken } from '../utils/jwt';
-import User, { IUser } from '../models/User';
+import User from '../models/User';
 
 export interface AuthRequest extends Request {
-  user?: IUser;
+  user?: any; // Use any to avoid type conflicts with mongoose model
 }
 
 export const authenticate = async (

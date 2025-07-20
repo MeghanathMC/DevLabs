@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import User from '../models/User';
 import { generateAccessToken, generateRefreshToken } from '../utils/jwt';
 import { validateRegister, validateLogin } from '../utils/validation';
+import { AuthRequest } from '../middleware/auth';
 
 export const register = async (req: Request, res: Response): Promise<void> => {
   try {
@@ -93,35 +94,54 @@ export const register = async (req: Request, res: Response): Promise<void> => {
 
 export const login = async (req: Request, res: Response): Promise<void> => {
   try {
+    console.log('Login attempt with body:', req.body);
+    
     const { error, value } = validateLogin(req.body);
     if (error) {
+      console.log('Validation error:', error.details[0]?.message);
       res.status(400).json({ error: error.details[0]?.message || 'Validation error' });
       return;
     }
 
     const { email, password } = value;
+    console.log('Attempting login for email:', email);
 
     // Find user
     const user = await User.findOne({ email });
     if (!user) {
+      console.log('User not found for email:', email);
       res.status(401).json({ error: 'Invalid credentials' });
       return;
     }
 
+    console.log('User found, checking password...');
+
     // Check password
     const isPasswordValid = await user.comparePassword(password);
     if (!isPasswordValid) {
+      console.log('Invalid password for user:', email);
       res.status(401).json({ error: 'Invalid credentials' });
       return;
     }
+
+    console.log('Password valid, generating tokens...');
 
     // Update last login
     user.lastLogin = new Date();
     await user.save();
 
+    // Check if JWT_SECRET is available
+    if (!process.env.JWT_SECRET) {
+      console.error('JWT_SECRET is not set in environment variables');
+      res.status(500).json({ error: 'Server configuration error' });
+      return;
+    }
+
     const payload = { userId: (user._id as any).toString(), email: user.email };
     const accessToken = generateAccessToken(payload);
     const refreshToken = generateRefreshToken(payload);
+
+    console.log('Login successful for user:', email);
 
     res.json({
       message: 'Login successful',
@@ -149,10 +169,16 @@ export const login = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-export const verify = async (req: any, res: Response): Promise<void> => {
+export const verify = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
     // If we reach here, the authentication middleware has already verified the token
     const user = req.user;
+    
+    if (!user) {
+      res.status(401).json({ error: 'User not found' });
+      return;
+    }
+    
     res.json({ 
       valid: true, 
       user: {
