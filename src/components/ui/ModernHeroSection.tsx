@@ -153,7 +153,7 @@ export default function ModernHeroSection({
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.08] mb-8 md:mb-12"
           >
             <div className="h-6 w-6 bg-gradient-to-br from-indigo-500 to-rose-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xs">H</span>
+              <span className="text-white font-bold text-xs">D</span>
             </div>
             <span className="text-sm text-white/60 tracking-wide">{badge}</span>
           </motion.div>

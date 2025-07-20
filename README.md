@@ -1,23 +1,35 @@
 # DevLabs - Developer Portfolio Platform
 
+<div align="center">
+
+![DevLabs Logo](https://img.shields.io/badge/DevLabs-Portfolio%20Platform-blue?style=for-the-badge&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+
 A comprehensive portfolio aggregation platform designed to help developers showcase their hackathon projects, achievements, and technical skills through professional, customizable portfolios.
+
+[Live Demo](https://devlabs-demo.vercel.app) • [Documentation](https://devlabs-docs.vercel.app) • [Issues](https://github.com/your-username/devlabs/issues)
+
+</div>
 
 ## 🚀 Features
 
-### Core Features
-- **Authentication & User Management**: Secure JWT-based authentication with comprehensive user profiles
-- **Project Management**: Rich project repository with hackathon details, team information, and media assets
-- **Achievement Tracking**: Comprehensive tracking of awards, certificates, and recognitions
-- **Dynamic Portfolio Generation**: Multiple professional templates with customization options
-- **Analytics Dashboard**: Portfolio performance tracking and insights
-- **Public Portfolio Pages**: SEO-optimized, shareable portfolio URLs
+### ✨ Core Features
+- **🔐 Authentication & User Management**: Secure JWT-based authentication with comprehensive user profiles
+- **📁 Project Management**: Rich project repository with hackathon details, team information, and media assets
+- **🏆 Achievement Tracking**: Comprehensive tracking of awards, certificates, and recognitions
+- **🎨 Dynamic Portfolio Generation**: Multiple professional templates with customization options
+- **📊 Analytics Dashboard**: Portfolio performance tracking and insights
+- **🌐 Public Portfolio Pages**: SEO-optimized, shareable portfolio URLs
 
-### Technical Features
-- **Responsive Design**: Mobile-first approach with tablet and desktop optimization
-- **Modern UI**: TAP Academy design system with Tailwind CSS
-- **Smooth Animations**: Framer Motion for micro-interactions
-- **Type Safety**: Full TypeScript implementation
-- **Performance Optimized**: Code splitting and optimized bundle size
+### 🛠️ Technical Features
+- **📱 Responsive Design**: Mobile-first approach with tablet and desktop optimization
+- **🎨 Modern UI**: TAP Academy design system with Tailwind CSS
+- **✨ Smooth Animations**: Framer Motion for micro-interactions
+- **🔒 Type Safety**: Full TypeScript implementation
+- **⚡ Performance Optimized**: Code splitting and optimized bundle size
 
 ## 🛠️ Tech Stack
 
@@ -31,57 +43,216 @@ A comprehensive portfolio aggregation platform designed to help developers showc
 - **Recharts** for analytics visualization
 - **Heroicons & Lucide React** for icons
 
-### Backend (Recommended)
+### Backend
 - **Node.js + Express** with TypeScript
 - **MongoDB + Mongoose** for database
 - **JWT + bcrypt** for authentication
-- **Cloudinary/AWS S3** for file storage
+- **Cloudinary** for file storage
+- **Nodemailer** for email services
+- **Passport.js** for OAuth (Google)
 
 ## 📁 Project Structure
 
 ```
-src/
-├── components/
-│   ├── auth/           # Authentication components
-│   ├── layout/         # Layout components (Header, Sidebar, etc.)
-│   └── ui/             # Reusable UI components
-├── contexts/           # React contexts (Auth, etc.)
-├── pages/              # Page components
-├── services/           # API services and utilities
-├── types/              # TypeScript type definitions
-├── lib/                # Utility functions
-└── styles/             # Global styles and Tailwind config
+project/
+├── src/                          # Frontend source code
+│   ├── components/               # React components
+│   │   ├── auth/                # Authentication components
+│   │   ├── layout/              # Layout components
+│   │   └── ui/                  # Reusable UI components
+│   ├── contexts/                # React contexts
+│   ├── pages/                   # Page components
+│   ├── services/                # API services
+│   ├── types/                   # TypeScript types
+│   └── lib/                     # Utility functions
+├── backend/                     # Backend source code
+│   ├── src/
+│   │   ├── controllers/         # Route controllers
+│   │   ├── middleware/          # Express middleware
+│   │   ├── models/              # Mongoose models
+│   │   ├── routes/              # API routes
+│   │   ├── services/            # Business logic
+│   │   ├── config/              # Configuration
+│   │   └── types/               # TypeScript types
+│   └── tests/                   # Test files
+├── public/                      # Static assets
+└── docs/                        # Documentation
 ```
 
-## 🚀 Getting Started
+## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 18+ 
-- npm or yarn
+- **Node.js** 18+ 
+- **npm** or **yarn**
+- **MongoDB** (local or cloud)
+- **Cloudinary** account (for file uploads)
 
-### Installation
-
-1. Clone the repository:
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/your-username/devlabs.git
 cd devlabs
 ```
 
-2. Install dependencies:
+### 2. Frontend Setup
 ```bash
+# Install dependencies
 npm install
-```
 
-3. Start the development server:
-```bash
+# Start development server
 npm run dev
 ```
 
-4. Open [http://localhost:5173](http://localhost:5173) in your browser
+The frontend will be available at [http://localhost:5173](http://localhost:5173)
 
-### Demo Credentials
-- **Email**: demo@example.com
-- **Password**: password
+### 3. Backend Setup
+```bash
+# Navigate to backend directory
+cd backend
+
+# Install dependencies
+npm install
+
+# Create environment file
+cp .env.example .env
+```
+
+### 4. Environment Configuration
+Create a `.env` file in the `backend` directory:
+
+```env
+# Server Configuration
+NODE_ENV=development
+PORT=5000
+API_VERSION=v1
+
+# Database
+MONGODB_URI=mongodb://localhost:27017/devlabs
+
+# JWT Configuration
+JWT_SECRET=your_super_secret_jwt_key_here
+JWT_EXPIRE=7d
+
+# Cloudinary Configuration
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+
+# Email Configuration (Optional)
+EMAIL_FROM=noreply@devlabs.com
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your_email@gmail.com
+SMTP_PASS=your_app_password
+
+# Frontend URL
+FRONTEND_URL=http://localhost:5173
+```
+
+### 5. Start Backend Server
+```bash
+# Development mode
+npm run dev
+
+# Production build
+npm run build
+npm start
+```
+
+The backend API will be available at [http://localhost:5000](http://localhost:5000)
+
+### 6. Database Setup
+```bash
+# Start MongoDB (if using local instance)
+mongod
+
+# Or use MongoDB Atlas (cloud)
+# Update MONGODB_URI in .env file
+```
+
+## 📚 API Documentation
+
+### Authentication Endpoints
+```typescript
+POST /api/v1/auth/register     # Register new user
+POST /api/v1/auth/login        # User login
+GET  /api/v1/auth/verify       # Verify JWT token
+POST /api/v1/auth/logout       # User logout
+```
+
+### Project Endpoints
+```typescript
+GET    /api/v1/projects        # Get all projects
+POST   /api/v1/projects        # Create new project
+GET    /api/v1/projects/:id    # Get project by ID
+PUT    /api/v1/projects/:id    # Update project
+DELETE /api/v1/projects/:id    # Delete project
+```
+
+### Achievement Endpoints
+```typescript
+GET    /api/v1/achievements    # Get all achievements
+POST   /api/v1/achievements    # Create new achievement
+GET    /api/v1/achievements/:id # Get achievement by ID
+PUT    /api/v1/achievements/:id # Update achievement
+DELETE /api/v1/achievements/:id # Delete achievement
+```
+
+### Portfolio Endpoints
+```typescript
+GET  /api/v1/portfolio/:slug   # Get public portfolio
+PUT  /api/v1/portfolio/settings # Update portfolio settings
+```
+
+## 🎨 Design System
+
+### Colors (TAP Academy)
+```css
+/* Primary Colors */
+--primary: #269BDA;
+--primary-light: #3FAEE6;
+--primary-dark: #1E7AB8;
+
+/* Background Colors */
+--bg-primary: #1c2026;
+--bg-secondary: #242830;
+--bg-tertiary: #2D3139;
+
+/* Text Colors */
+--text-primary: #f5f5f5;
+--text-secondary: rgba(245, 245, 245, 0.80);
+```
+
+### Typography
+- **Font Family**: Inter (Google Fonts)
+- **Font Weights**: 400, 500, 600, 700
+- **Line Heights**: 150% (body), 120% (headings)
+
+### Component Variants
+```typescript
+// Button variants
+const buttonVariants = {
+  primary: "bg-primary text-white hover:bg-primary-dark",
+  secondary: "bg-secondary text-primary hover:bg-tertiary",
+  outline: "border border-primary text-primary hover:bg-primary"
+};
+
+// Card variants
+const cardVariants = {
+  default: "bg-secondary rounded-lg p-6",
+  elevated: "bg-secondary rounded-lg p-6 shadow-lg",
+  interactive: "bg-secondary rounded-lg p-6 hover:shadow-xl transition-shadow"
+};
+```
+
+## 🔒 Security Features
+
+- **JWT Authentication**: Secure token-based authentication
+- **Input Validation**: Client and server-side validation with Yup/Joi
+- **Protected Routes**: Route-level authentication guards
+- **CORS**: Proper cross-origin resource sharing
+- **Rate Limiting**: API rate limiting (100 requests per 15 minutes)
+- **Helmet**: Security headers middleware
+- **bcrypt**: Password hashing with salt rounds
 
 ## 📊 Data Models
 
@@ -128,6 +299,8 @@ interface User {
     publicProfile: boolean;
     showEmail: boolean;
   };
+  createdAt: Date;
+  updatedAt: Date;
 }
 ```
 
@@ -173,6 +346,8 @@ interface Project {
     likes: number;
     githubStars?: number;
   };
+  createdAt: Date;
+  updatedAt: Date;
 }
 ```
 
@@ -195,135 +370,116 @@ interface Achievement {
   featured: boolean;
   skills: string[];
   projectId?: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 ```
 
-## 🎨 Design System
-
-### Colors (TAP Academy)
-- **Primary**: #269BDA (Blue)
-- **Primary Variants**: #3FAEE6, #1E7AB8, #165F91
-- **Background**: #1c2026 (Primary), #242830 (Secondary), #2D3139 (Tertiary)
-- **Text**: #f5f5f5 (Primary), rgba(245, 245, 245, 0.80) (Secondary)
-
-### Typography
-- **Font**: Inter (Google Fonts)
-- **Hierarchy**: Display, H1-H4, Body (Large, Regular, Small), Caption
-- **Line Heights**: 150% for body text, 120% for headings
-
-### Components
-- **Buttons**: Primary, Secondary, Tertiary variants
-- **Cards**: Interactive cards with hover effects
-- **Inputs**: Consistent form styling with focus states
-- **Navigation**: Floating nav and sidebar layouts
-
-## 📱 Responsive Design
-
-- **Mobile First**: Touch-optimized mobile experience
-- **Breakpoints**: 
-  - Mobile: < 768px
-  - Tablet: 768px - 1024px
-  - Desktop: > 1024px
-- **Touch Targets**: Minimum 44px for accessibility
-
-## 🔒 Security Features
-
-- **JWT Authentication**: Secure token-based authentication
-- **Input Validation**: Client and server-side validation
-- **Protected Routes**: Route-level authentication guards
-- **CORS**: Proper cross-origin resource sharing
-- **Rate Limiting**: API rate limiting (backend)
-
-## 📈 Performance
-
-- **Code Splitting**: Route-based code splitting
-- **Bundle Optimization**: Tree shaking and minification
-- **Image Optimization**: WebP format and compression
-- **Caching**: Browser caching strategies
-- **Lighthouse Score**: Target > 90 for all metrics
-
 ## 🧪 Testing
 
+### Frontend Testing
 ```bash
 # Run tests
 npm run test
 
+# Run tests in watch mode
+npm run test:watch
+
 # Run tests with coverage
 npm run test:coverage
+```
 
-# Run E2E tests
-npm run test:e2e
+### Backend Testing
+```bash
+cd backend
+
+# Run tests
+npm run test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage
+npm run test:coverage
 ```
 
 ## 🚀 Deployment
 
-### Build for Production
+### Frontend Deployment (Vercel)
 ```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
+
+# Or connect GitHub repository for automatic deployments
+```
+
+### Backend Deployment (Railway/Heroku)
+```bash
+# Set environment variables in deployment platform
+# Build and deploy
 npm run build
+npm start
 ```
 
-### Preview Production Build
-```bash
-npm run preview
+### Environment Variables for Production
+```env
+NODE_ENV=production
+PORT=5000
+MONGODB_URI=your_production_mongodb_uri
+JWT_SECRET=your_production_jwt_secret
+CLOUDINARY_CLOUD_NAME=your_cloudinary_name
+CLOUDINARY_API_KEY=your_cloudinary_key
+CLOUDINARY_API_SECRET=your_cloudinary_secret
+FRONTEND_URL=https://your-frontend-domain.com
 ```
-
-### Deploy to Netlify
-1. Connect your GitHub repository to Netlify
-2. Set build command: `npm run build`
-3. Set publish directory: `dist`
-4. Deploy!
-
-## 🗺️ Roadmap
-
-### Phase 1: Foundation ✅
-- [x] Project setup with Vite + TypeScript
-- [x] Authentication system
-- [x] Basic UI component library
-- [x] User management
-
-### Phase 2: Core Features ✅
-- [x] Project management system
-- [x] Achievement tracking
-- [x] Basic dashboard
-- [x] Portfolio templates
-
-### Phase 3: Advanced Features 🚧
-- [ ] Enhanced analytics dashboard
-- [ ] Advanced search and filtering
-- [ ] Portfolio customization engine
-- [ ] Export functionality (PDF)
-
-### Phase 4: Future Enhancements 📋
-- [ ] GitHub integration
-- [ ] LinkedIn sync
-- [ ] Mobile app (React Native)
-- [ ] AI-powered recommendations
-- [ ] Community features
 
 ## 🤝 Contributing
 
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+
+### Development Workflow
 1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
+### Code Style
+- Use TypeScript for type safety
+- Follow ESLint configuration
+- Write meaningful commit messages
+- Add tests for new features
+- Update documentation as needed
+
+## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
-- **TAP Academy** for the design system and color palette
-- **Heroicons & Lucide** for the beautiful icon sets
-- **Tailwind CSS** for the utility-first CSS framework
-- **Framer Motion** for smooth animations
-- **React Community** for the amazing ecosystem
+- [TAP Academy](https://tapacademy.com) for design inspiration
+- [React](https://reactjs.org) team for the amazing framework
+- [Tailwind CSS](https://tailwindcss.com) for the utility-first CSS framework
+- [Framer Motion](https://www.framer.com/motion/) for smooth animations
 
 ## 📞 Support
 
-For support, email support@devlabs.com or join our Discord community.
+- **Email**: support@devlabs.com
+- **Discord**: [DevLabs Community](https://discord.gg/devlabs)
+- **Documentation**: [https://devlabs-docs.vercel.app](https://devlabs-docs.vercel.app)
+- **Issues**: [GitHub Issues](https://github.com/your-username/devlabs/issues)
 
 ---
 
-**DevLabs** - Showcase Your Developer Journey 🚀
+<div align="center">
+
+Made with ❤️ by the DevLabs Team
+
+[![GitHub stars](https://img.shields.io/github/stars/your-username/devlabs?style=social)](https://github.com/your-username/devlabs)
+[![GitHub forks](https://img.shields.io/github/forks/your-username/devlabs?style=social)](https://github.com/your-username/devlabs)
+[![GitHub issues](https://img.shields.io/github/issues/your-username/devlabs)](https://github.com/your-username/devlabs/issues)
+
+</div>

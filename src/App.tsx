@@ -15,10 +15,17 @@ import { Profile } from './pages/Profile';
 import { PublicPortfolio } from './pages/PublicPortfolio';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
 import { AuthCallback } from './components/auth/AuthCallback';
+import { TwentyFirstToolbar } from '@21st-extension/toolbar-react';
+import { ReactPlugin } from '@21st-extension/react';
 
 function App() {
   return (
     <AuthProvider>
+      <TwentyFirstToolbar
+        config={{
+          plugins: [ReactPlugin],
+        }}
+      />
       <Router>
         <Routes>
           {/* Public routes */}

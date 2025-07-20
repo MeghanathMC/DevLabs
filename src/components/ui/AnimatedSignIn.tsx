@@ -162,7 +162,7 @@ const AnimatedSignIn: React.FC = () => {
               <div className="mb-8">
                 <div className="flex items-center space-x-2 mb-4">
                   <div className="h-8 w-8 bg-gradient-to-br from-indigo-500 to-rose-500 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">H</span>
+                    <span className="text-white font-bold text-sm">D</span>
                   </div>
                   <span className={`text-xl font-bold ${theme === 'dark' ? 'text-text-primary' : 'text-gray-900'}`}>DevLabs</span>
                 </div>

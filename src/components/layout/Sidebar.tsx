@@ -53,7 +53,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
     return (
       <div className="flex items-center space-x-2 py-1 px-3">
         <div className="h-8 w-8 bg-gradient-to-br from-indigo-500 to-rose-500 rounded-lg flex items-center justify-center flex-shrink-0">
-          <span className="text-white font-bold text-sm">H</span>
+          <span className="text-white font-bold text-sm">D</span>
         </div>
         <motion.span
           initial={{ opacity: 0 }}

@@ -31,7 +31,7 @@ function FooterSection() {
           <div className="relative">
             <div className="flex items-center space-x-2 mb-4">
               <div className="h-8 w-8 bg-gradient-to-br from-indigo-500 to-rose-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">H</span>
+                <span className="text-white font-bold text-sm">D</span>
               </div>
               <h2 className="text-2xl font-bold tracking-tight">DevLabs</h2>
             </div>
@@ -104,7 +104,7 @@ function FooterSection() {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="outline" size="icon" className="rounded-full border-indigo-500/20 bg-bg-tertiary hover:bg-indigo-500/10 hover:border-indigo-500/40">
+                    <Button variant="secondary" size="icon" className="rounded-full border-indigo-500/20 bg-bg-tertiary hover:bg-indigo-500/10 hover:border-indigo-500/40">
                       <Github className="h-4 w-4 text-text-secondary" />
                       <span className="sr-only">GitHub</span>
                     </Button>
@@ -118,7 +118,7 @@ function FooterSection() {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="outline" size="icon" className="rounded-full border-indigo-500/20 bg-bg-tertiary hover:bg-indigo-500/10 hover:border-indigo-500/40">
+                    <Button variant="secondary" size="icon" className="rounded-full border-indigo-500/20 bg-bg-tertiary hover:bg-indigo-500/10 hover:border-indigo-500/40">
                       <Twitter className="h-4 w-4 text-text-secondary" />
                       <span className="sr-only">Twitter</span>
                     </Button>
@@ -132,7 +132,7 @@ function FooterSection() {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="outline" size="icon" className="rounded-full border-indigo-500/20 bg-bg-tertiary hover:bg-indigo-500/10 hover:border-indigo-500/40">
+                    <Button variant="secondary" size="icon" className="rounded-full border-indigo-500/20 bg-bg-tertiary hover:bg-indigo-500/10 hover:border-indigo-500/40">
                       <Linkedin className="h-4 w-4 text-text-secondary" />
                       <span className="sr-only">LinkedIn</span>
                     </Button>
@@ -149,7 +149,7 @@ function FooterSection() {
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-indigo-500/20 pt-8 text-center md:flex-row">
           <div className="flex items-center space-x-2">
             <div className="h-6 w-6 bg-gradient-to-br from-indigo-500 to-rose-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xs">H</span>
+              <span className="text-white font-bold text-xs">D</span>
             </div>
             <p className="text-sm text-text-tertiary">
               © 2024 DevLabs. Built for developers, by developers.
