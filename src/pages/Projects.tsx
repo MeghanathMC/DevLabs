@@ -4,6 +4,7 @@ import { projectsAPI } from '../services/api';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
+import { ProjectForm } from '../components/ui/ProjectForm';
 
 interface Project {
   id: string;
@@ -41,19 +42,20 @@ export const Projects: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState<string>('all');
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
+  const fetchProjects = async () => {
+    try {
+      const data = await projectsAPI.getProjects();
+      setProjects(data);
+    } catch (error) {
+      console.error('Error fetching projects:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const data = await projectsAPI.getProjects();
-        setProjects(data);
-      } catch (error) {
-        console.error('Error fetching projects:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchProjects();
   }, []);
 
@@ -63,6 +65,10 @@ export const Projects: React.FC = () => {
     const matchesFilter = filterStatus === 'all' || project.status === filterStatus;
     return matchesSearch && matchesFilter;
   });
+
+  const handleProjectCreated = () => {
+    fetchProjects(); // Refresh the projects list
+  };
 
   if (loading) {
     return (
@@ -78,7 +84,7 @@ export const Projects: React.FC = () => {
           <h1 className="text-3xl font-bold text-text-primary">Projects</h1>
           <p className="mt-2 text-text-secondary">Manage and showcase your hackathon projects.</p>
         </div>
-        <Button>
+        <Button onClick={() => setIsFormOpen(true)}>
           <PlusIcon className="h-4 w-4 mr-2" />
           Add Project
         </Button>
@@ -212,13 +218,20 @@ export const Projects: React.FC = () => {
                 : "You haven't added any projects yet. Start by adding your first hackathon project!"
               }
             </p>
-            <Button>
+            <Button onClick={() => setIsFormOpen(true)}>
               <PlusIcon className="h-4 w-4 mr-2" />
               Add Your First Project
             </Button>
           </div>
         </div>
       )}
+
+      {/* Project Form Modal */}
+      <ProjectForm
+        isOpen={isFormOpen}
+        onClose={() => setIsFormOpen(false)}
+        onSuccess={handleProjectCreated}
+      />
     </div>
   );
 };

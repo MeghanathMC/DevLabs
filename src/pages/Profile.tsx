@@ -1,11 +1,163 @@
-import React from 'react';
-import { CameraIcon, PencilIcon } from '@heroicons/react/24/outline';
+import React, { useState, useEffect } from 'react';
+import { CameraIcon, PencilIcon, CheckIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useAuth } from '../contexts/AuthContext';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
+import { userAPI } from '../services/api';
 
 export const Profile: React.FC = () => {
-  const { user } = useAuth();
+  const { user, updateUser } = useAuth();
+  const [isEditing, setIsEditing] = useState(false);
+  const [isChangingPassword, setIsChangingPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+
+  // Form state
+  const [formData, setFormData] = useState({
+    firstName: user?.firstName || '',
+    lastName: user?.lastName || '',
+    bio: user?.bio || '',
+    location: user?.location || '',
+    university: user?.university || '',
+    graduationYear: user?.graduationYear || '',
+    skills: user?.skills || [],
+    socialLinks: {
+      github: user?.socialLinks?.github || '',
+      linkedin: user?.socialLinks?.linkedin || '',
+      portfolio: user?.socialLinks?.portfolio || '',
+      twitter: user?.socialLinks?.twitter || ''
+    }
+  });
+
+  // Password change state
+  const [passwordData, setPasswordData] = useState({
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: ''
+  });
+
+  // Update form data when user changes
+  useEffect(() => {
+    if (user) {
+      setFormData({
+        firstName: user.firstName || '',
+        lastName: user.lastName || '',
+        bio: user.bio || '',
+        location: user.location || '',
+        university: user.university || '',
+        graduationYear: user.graduationYear || '',
+        skills: user.skills || [],
+        socialLinks: {
+          github: user.socialLinks?.github || '',
+          linkedin: user.socialLinks?.linkedin || '',
+          portfolio: user.socialLinks?.portfolio || '',
+          twitter: user.socialLinks?.twitter || ''
+        }
+      });
+    }
+  }, [user]);
+
+  const handleInputChange = (field: string, value: string) => {
+    if (field.includes('.')) {
+      const [parent, child] = field.split('.');
+      setFormData(prev => ({
+        ...prev,
+        [parent]: {
+          ...prev[parent as keyof typeof prev],
+          [child]: value
+        }
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [field]: value
+      }));
+    }
+  };
+
+  const handleSaveProfile = async () => {
+    setLoading(true);
+    setError('');
+    setSuccess('');
+
+    try {
+      const updatedUser = await userAPI.updateProfile(formData);
+      updateUser(updatedUser);
+      setSuccess('Profile updated successfully!');
+      setIsEditing(false);
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleCancelEdit = () => {
+    // Reset form data to original values
+    if (user) {
+      setFormData({
+        firstName: user.firstName || '',
+        lastName: user.lastName || '',
+        bio: user.bio || '',
+        location: user.location || '',
+        university: user.university || '',
+        graduationYear: user.graduationYear || '',
+        skills: user.skills || [],
+        socialLinks: {
+          github: user.socialLinks?.github || '',
+          linkedin: user.socialLinks?.linkedin || '',
+          portfolio: user.socialLinks?.portfolio || '',
+          twitter: user.socialLinks?.twitter || ''
+        }
+      });
+    }
+    setIsEditing(false);
+    setError('');
+  };
+
+  const handleChangePassword = async () => {
+    if (passwordData.newPassword !== passwordData.confirmPassword) {
+      setError('New passwords do not match');
+      return;
+    }
+
+    if (passwordData.newPassword.length < 6) {
+      setError('New password must be at least 6 characters long');
+      return;
+    }
+
+    setLoading(true);
+    setError('');
+    setSuccess('');
+
+    try {
+      await userAPI.changePassword(passwordData.currentPassword, passwordData.newPassword);
+      setSuccess('Password changed successfully!');
+      setIsChangingPassword(false);
+      setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const addSkill = (skill: string) => {
+    if (skill.trim() && !formData.skills.includes(skill.trim())) {
+      setFormData(prev => ({
+        ...prev,
+        skills: [...prev.skills, skill.trim()]
+      }));
+    }
+  };
+
+  const removeSkill = (skillToRemove: string) => {
+    setFormData(prev => ({
+      ...prev,
+      skills: prev.skills.filter(skill => skill !== skillToRemove)
+    }));
+  };
 
   return (
     <div className="space-y-8">
@@ -14,6 +166,18 @@ export const Profile: React.FC = () => {
         <h1 className="text-3xl font-bold text-gray-900">Profile Settings</h1>
         <p className="mt-2 text-gray-600">Manage your account information and preferences.</p>
       </div>
+
+      {/* Success/Error Messages */}
+      {success && (
+        <div className="p-4 bg-green-500/10 border border-green-500/30 text-green-400 rounded-lg">
+          {success}
+        </div>
+      )}
+      {error && (
+        <div className="p-4 bg-red-500/10 border border-red-500/30 text-red-400 rounded-lg">
+          {error}
+        </div>
+      )}
 
       {/* Profile Picture & Basic Info */}
       <div className="card p-6">
@@ -44,48 +208,67 @@ export const Profile: React.FC = () => {
       <div className="card p-6">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-lg font-semibold text-text-primary">Personal Information</h2>
-          <Button variant="outline" size="sm">
-            <PencilIcon className="h-4 w-4 mr-2" />
-            Edit
-          </Button>
+          {!isEditing ? (
+            <Button variant="outline" size="sm" onClick={() => setIsEditing(true)}>
+              <PencilIcon className="h-4 w-4 mr-2" />
+              Edit
+            </Button>
+          ) : (
+            <div className="flex space-x-2">
+              <Button variant="outline" size="sm" onClick={handleCancelEdit}>
+                <XMarkIcon className="h-4 w-4 mr-2" />
+                Cancel
+              </Button>
+              <Button size="sm" onClick={handleSaveProfile} disabled={loading}>
+                <CheckIcon className="h-4 w-4 mr-2" />
+                {loading ? 'Saving...' : 'Save'}
+              </Button>
+            </div>
+          )}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Input
             label="First Name"
-            defaultValue={user?.firstName}
-            disabled
+            value={formData.firstName}
+            onChange={(e) => handleInputChange('firstName', e.target.value)}
+            disabled={!isEditing}
           />
           <Input
             label="Last Name"
-            defaultValue={user?.lastName}
-            disabled
+            value={formData.lastName}
+            onChange={(e) => handleInputChange('lastName', e.target.value)}
+            disabled={!isEditing}
           />
           <Input
             label="Email Address"
             type="email"
-            defaultValue={user?.email}
+            value={user?.email}
             disabled
+            helperText="Email cannot be changed"
           />
           <Input
             label="Location"
-            defaultValue={user?.location}
-            disabled
+            value={formData.location}
+            onChange={(e) => handleInputChange('location', e.target.value)}
+            disabled={!isEditing}
           />
           <Input
             label="University"
-            defaultValue={user?.university}
-            disabled
+            value={formData.university}
+            onChange={(e) => handleInputChange('university', e.target.value)}
+            disabled={!isEditing}
           />
           <Input
             label="Graduation Year"
             type="number"
-            defaultValue={user?.graduationYear?.toString()}
-            disabled
+            value={formData.graduationYear}
+            onChange={(e) => handleInputChange('graduationYear', e.target.value)}
+            disabled={!isEditing}
           />
           <Input
             label="Portfolio Slug"
-            defaultValue={user?.portfolioSlug || 'your-username'}
+            value={user?.portfolioSlug || 'your-username'}
             disabled
             helperText="This appears in your portfolio URL"
           />
@@ -96,21 +279,44 @@ export const Profile: React.FC = () => {
           <textarea
             rows={4}
             className="block w-full px-3 py-2 bg-bg-tertiary border border-indigo-500/20 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/10 focus:border-indigo-500 disabled:bg-bg-primary disabled:text-text-tertiary text-text-primary"
-            defaultValue={user?.bio}
-            disabled
+            value={formData.bio}
+            onChange={(e) => handleInputChange('bio', e.target.value)}
+            disabled={!isEditing}
             placeholder="Tell us about yourself..."
           />
         </div>
 
         <div className="mt-6">
           <label className="block text-sm font-medium text-text-primary mb-2">Skills</label>
+          {isEditing && (
+            <div className="mb-4">
+              <Input
+                placeholder="Add a skill and press Enter"
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    addSkill((e.target as HTMLInputElement).value);
+                    (e.target as HTMLInputElement).value = '';
+                  }
+                }}
+              />
+            </div>
+          )}
           <div className="flex flex-wrap gap-2">
-            {user?.skills?.map((skill, index) => (
+            {formData.skills.map((skill, index) => (
               <span
                 key={index}
                 className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-500/10 text-indigo-400"
               >
                 {skill}
+                {isEditing && (
+                  <button
+                    onClick={() => removeSkill(skill)}
+                    className="ml-2 text-indigo-300 hover:text-indigo-100"
+                  >
+                    ×
+                  </button>
+                )}
               </span>
             ))}
           </div>
@@ -121,23 +327,27 @@ export const Profile: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Input
               label="GitHub"
-              defaultValue={user?.socialLinks?.github}
-              disabled
+              value={formData.socialLinks.github}
+              onChange={(e) => handleInputChange('socialLinks.github', e.target.value)}
+              disabled={!isEditing}
             />
             <Input
               label="LinkedIn"
-              defaultValue={user?.socialLinks?.linkedin}
-              disabled
+              value={formData.socialLinks.linkedin}
+              onChange={(e) => handleInputChange('socialLinks.linkedin', e.target.value)}
+              disabled={!isEditing}
             />
             <Input
               label="Portfolio Website"
-              defaultValue={user?.socialLinks?.portfolio}
-              disabled
+              value={formData.socialLinks.portfolio}
+              onChange={(e) => handleInputChange('socialLinks.portfolio', e.target.value)}
+              disabled={!isEditing}
             />
             <Input
               label="Twitter"
-              defaultValue={user?.socialLinks?.twitter}
-              disabled
+              value={formData.socialLinks.twitter}
+              onChange={(e) => handleInputChange('socialLinks.twitter', e.target.value)}
+              disabled={!isEditing}
             />
           </div>
         </div>
@@ -193,10 +403,47 @@ export const Profile: React.FC = () => {
               <h3 className="text-sm font-medium text-rose-400">Change Password</h3>
               <p className="text-sm text-rose-300">Update your account password</p>
             </div>
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" onClick={() => setIsChangingPassword(!isChangingPassword)}>
               Change Password
             </Button>
           </div>
+
+          {isChangingPassword && (
+            <div className="p-4 bg-bg-tertiary rounded-lg space-y-4">
+              <Input
+                label="Current Password"
+                type="password"
+                value={passwordData.currentPassword}
+                onChange={(e) => setPasswordData(prev => ({ ...prev, currentPassword: e.target.value }))}
+                placeholder="Enter your current password"
+              />
+              <Input
+                label="New Password"
+                type="password"
+                value={passwordData.newPassword}
+                onChange={(e) => setPasswordData(prev => ({ ...prev, newPassword: e.target.value }))}
+                placeholder="Enter your new password"
+              />
+              <Input
+                label="Confirm New Password"
+                type="password"
+                value={passwordData.confirmPassword}
+                onChange={(e) => setPasswordData(prev => ({ ...prev, confirmPassword: e.target.value }))}
+                placeholder="Confirm your new password"
+              />
+              <div className="flex space-x-2">
+                <Button variant="outline" size="sm" onClick={() => {
+                  setIsChangingPassword(false);
+                  setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+                }}>
+                  Cancel
+                </Button>
+                <Button size="sm" onClick={handleChangePassword} disabled={loading}>
+                  {loading ? 'Changing...' : 'Change Password'}
+                </Button>
+              </div>
+            </div>
+          )}
 
           <div className="flex items-center justify-between p-4 bg-rose-500/5 border border-rose-500/20 rounded-lg">
             <div>

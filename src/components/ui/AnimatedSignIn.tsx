@@ -72,70 +72,61 @@ const AnimatedSignIn: React.FC = () => {
             {/* Left side - Statistics and Images Collage */}
             <div className={`hidden md:block w-full md:w-3/5 p-6 animate-fade-in ${theme === 'dark' ? 'bg-bg-tertiary' : 'bg-gray-100'}`}>
               <div className="grid grid-cols-2 grid-rows-3 gap-4 h-full overflow-hidden">
-                {/* Top left - Hackathon team working */}
+                {/* Top left - Student Portfolio Showcase */}
                 <div className="overflow-hidden rounded-xl">
                   <img 
-                    src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600" 
-                    alt="Hackathon team working" 
+                    src="/20250720_2244_Student Portfolio Showcase_remix_01k0md58m4f49vgx1565thjw4k.png" 
+                    alt="Student Portfolio Showcase" 
                     className="w-full h-full object-cover"
                     style={{ opacity: 0.9 }}
                   />
                 </div>
                 
-                {/* Top right - Primary stat */}
-                <div 
-                  className={`rounded-xl flex flex-col justify-center items-center p-6 text-white bg-gradient-to-br from-primary-500 to-primary-600`}
-                  className={`rounded-xl flex flex-col justify-center items-center p-6 text-white bg-gradient-to-br from-indigo-500 to-rose-500`}
-                  style={{
-                    transform: formVisible ? 'translateY(0)' : 'translateY(20px)',
-                    opacity: formVisible ? 1 : 0,
-                    transition: 'transform 0.6s ease-out, opacity 0.6s ease-out',
-                    transitionDelay: '0.2s',
-                  }}
-                >
-                  <h2 className="text-5xl font-bold mb-2">85%</h2>
-                  <p className="text-center text-sm">of developers showcase their projects through portfolios.</p>
-                </div>
-                
-                {/* Middle left - Coding workspace */}
+                {/* Top right - Cosmic Tech Meditation */}
                 <div className="overflow-hidden rounded-xl">
                   <img 
-                    src="https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=600" 
-                    alt="Coding workspace" 
+                    src="/20250718_1557_Cosmic Tech Meditation_simple_compose_01k0eh37g1fhm81dyxqhzvgmxm.png" 
+                    alt="Cosmic Tech Meditation" 
                     className="w-full h-full object-cover"
                     style={{ opacity: 0.9 }}
                   />
                 </div>
                 
-                {/* Middle right - Hackathon event */}
+                {/* Middle left - 3D Web Tech Logos */}
                 <div className="overflow-hidden rounded-xl">
                   <img 
-                    src="https://images.pexels.com/photos/1181676/pexels-photo-1181676.jpeg?auto=compress&cs=tinysrgb&w=600" 
-                    alt="Hackathon event" 
+                    src="/20250709_1524_3D Web Tech Logos_simple_compose_01jzq9mmecfm8rxfdw7p5jsq25.png" 
+                    alt="3D Web Tech Logos" 
                     className="w-full h-full object-cover"
                     style={{ opacity: 0.9 }}
                   />
                 </div>
                 
-                {/* Bottom left - Success stat */}
-                <div 
-                  className={`rounded-xl flex flex-col justify-center items-center p-6 text-white bg-gradient-to-br from-emerald-500 to-emerald-600`}
-                  style={{
-                    transform: formVisible ? 'translateY(0)' : 'translateY(20px)',
-                    opacity: formVisible ? 1 : 0,
-                    transition: 'transform 0.6s ease-out, opacity 0.6s ease-out',
-                    transitionDelay: '0.4s',
-                  }}
-                >
-                  <h2 className="text-5xl font-bold mb-2">92%</h2>
-                  <p className="text-center text-sm">of recruiters review portfolios before making hiring decisions.</p>
-                </div>
-                
-                {/* Bottom right - Developer setup */}
+                {/* Middle right - Floating Code Architect */}
                 <div className="overflow-hidden rounded-xl">
                   <img 
-                    src="https://images.pexels.com/photos/1181472/pexels-photo-1181472.jpeg?auto=compress&cs=tinysrgb&w=600" 
-                    alt="Developer setup" 
+                    src="/20250718_1716_Floating Code Architect_simple_compose_01k0ennc38epfstt6xv10r090a.png" 
+                    alt="Floating Code Architect" 
+                    className="w-full h-full object-cover"
+                    style={{ opacity: 0.9 }}
+                  />
+                </div>
+                
+                {/* Bottom left - Futuristic Online Shopping */}
+                <div className="overflow-hidden rounded-xl">
+                  <img 
+                    src="/20250710_1205_Futuristic Online Shopping_remix_01jzsgmz4wf69va8473t6yrshr.png" 
+                    alt="Futuristic Online Shopping" 
+                    className="w-full h-full object-cover"
+                    style={{ opacity: 0.9 }}
+                  />
+                </div>
+                
+                {/* Bottom right - Digital Mind Interface */}
+                <div className="overflow-hidden rounded-xl">
+                  <img 
+                    src="/20250718_1621_Digital Mind Interface_simple_compose_01k0ejgr9ee7rv84zjs40bsm22.png" 
+                    alt="Digital Mind Interface" 
                     className="w-full h-full object-cover"
                     style={{ opacity: 0.9 }}
                   />
@@ -334,6 +325,7 @@ const AnimatedSignIn: React.FC = () => {
                 <button
                   type="button"
                   className="btn-secondary w-full"
+                  onClick={() => window.location.href = 'http://localhost:5000/api/v1/auth/google'}
                 >
                   <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />

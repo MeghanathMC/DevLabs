@@ -28,31 +28,31 @@ export const validateProject = (data: any) => {
     technologies: Joi.array().items(Joi.string()).min(1).required(),
     category: Joi.string().valid('web', 'mobile', 'ai', 'blockchain', 'iot', 'game', 'other').required(),
     status: Joi.string().valid('completed', 'ongoing', 'abandoned').default('completed'),
-    images: Joi.array().items(Joi.string().uri()),
-    videos: Joi.array().items(Joi.string().uri()),
+    images: Joi.array().items(Joi.string().uri()).default([]),
+    videos: Joi.array().items(Joi.string().uri()).default([]),
     links: Joi.object({
-      github: Joi.string().uri(),
-      demo: Joi.string().uri(),
-      devpost: Joi.string().uri(),
-      youtube: Joi.string().uri(),
-      slides: Joi.string().uri()
-    }),
+      github: Joi.string().uri().allow(''),
+      demo: Joi.string().uri().allow(''),
+      devpost: Joi.string().uri().allow(''),
+      youtube: Joi.string().uri().allow(''),
+      slides: Joi.string().uri().allow('')
+    }).default({}),
     hackathon: Joi.object({
-      name: Joi.string().required(),
-      date: Joi.date().required(),
-      location: Joi.string().required(),
-      duration: Joi.string(),
-      organizer: Joi.string(),
-      website: Joi.string().uri()
-    }),
+      name: Joi.string().allow(''),
+      date: Joi.date().allow(''),
+      location: Joi.string().allow(''),
+      duration: Joi.string().allow(''),
+      organizer: Joi.string().allow(''),
+      website: Joi.string().uri().allow('')
+    }).optional(),
     team: Joi.array().items(Joi.object({
       name: Joi.string().required(),
       role: Joi.string().required(),
-      github: Joi.string().uri(),
-      linkedin: Joi.string().uri()
-    })),
-    achievements: Joi.array().items(Joi.string()),
-    tags: Joi.array().items(Joi.string()),
+      github: Joi.string().uri().allow(''),
+      linkedin: Joi.string().uri().allow('')
+    })).default([]),
+    achievements: Joi.array().items(Joi.string()).default([]),
+    tags: Joi.array().items(Joi.string()).default([]),
     featured: Joi.boolean().default(false)
   });
 

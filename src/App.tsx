@@ -14,6 +14,7 @@ import { Analytics } from './pages/Analytics';
 import { Profile } from './pages/Profile';
 import { PublicPortfolio } from './pages/PublicPortfolio';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
+import { AuthCallback } from './components/auth/AuthCallback';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/portfolio/:slug" element={<PublicPortfolio />} />
+          <Route path="/auth/callback" element={<AuthCallback />} />
           
           {/* Protected routes */}
           <Route path="/app" element={

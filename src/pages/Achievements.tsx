@@ -3,6 +3,7 @@ import { PlusIcon, TrophyIcon, AcademicCapIcon, StarIcon } from '@heroicons/reac
 import { achievementsAPI } from '../services/api';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { Button } from '../components/ui/Button';
+import { AchievementForm } from '../components/ui/AchievementForm';
 
 interface Achievement {
   id: string;
@@ -25,21 +26,26 @@ interface Achievement {
 export const Achievements: React.FC = () => {
   const [achievements, setAchievements] = useState<Achievement[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
+  const fetchAchievements = async () => {
+    try {
+      const data = await achievementsAPI.getAchievements();
+      setAchievements(data);
+    } catch (error) {
+      console.error('Error fetching achievements:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchAchievements = async () => {
-      try {
-        const data = await achievementsAPI.getAchievements();
-        setAchievements(data);
-      } catch (error) {
-        console.error('Error fetching achievements:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchAchievements();
   }, []);
+
+  const handleAchievementCreated = () => {
+    fetchAchievements(); // Refresh the achievements list
+  };
 
   const getAchievementIcon = (type: string) => {
     switch (type) {
@@ -81,7 +87,7 @@ export const Achievements: React.FC = () => {
           <h1 className="text-3xl font-bold text-text-primary">Achievements</h1>
           <p className="mt-2 text-text-secondary">Track your awards, certificates, and recognitions.</p>
         </div>
-        <Button>
+        <Button onClick={() => setIsFormOpen(true)}>
           <PlusIcon className="h-4 w-4 mr-2" />
           Add Achievement
         </Button>
@@ -110,81 +116,81 @@ export const Achievements: React.FC = () => {
       </div>
 
       {/* Achievements List */}
-      <div className="space-y-4">
-        {achievements.map((achievement) => {
-          const IconComponent = getAchievementIcon(achievement.type);
-          return (
-            <div key={achievement.id} className="card-interactive p-6">
-              <div className="flex items-start space-x-4">
-                <div className={`p-3 rounded-lg ${getAchievementColor(achievement.type)}`}>
-                  <IconComponent className="h-6 w-6" />
-                </div>
-                
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-text-primary mb-1">
-                        {achievement.title}
-                        {achievement.featured && (
-                          <span className="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/10 text-amber-400">
-                            Featured
-                          </span>
-                        )}
-                      </h3>
-                      <p className="text-sm text-text-secondary mb-2">{achievement.issuer}</p>
-                      {achievement.description && (
-                        <p className="text-text-secondary mb-3">{achievement.description}</p>
-                      )}
-                    </div>
-                    <div className="text-right">
-                      <p className="text-sm font-medium text-text-primary">
-                        {new Date(achievement.date).toLocaleDateString()}
-                      </p>
-                      <p className="text-xs text-text-tertiary">{achievement.category}</p>
-                    </div>
+      {achievements.length > 0 ? (
+        <div className="space-y-4">
+          {achievements.map((achievement) => {
+            const IconComponent = getAchievementIcon(achievement.type);
+            return (
+              <div key={achievement.id} className="card-interactive p-6">
+                <div className="flex items-start space-x-4">
+                  <div className={`p-3 rounded-lg ${getAchievementColor(achievement.type)}`}>
+                    <IconComponent className="h-6 w-6" />
                   </div>
                   
-                  <div className="flex items-center justify-between mt-4">
-                    <div className="flex space-x-2">
-                      {achievement.certificateUrl && (
-                        <a
-                          href={achievement.certificateUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-indigo-400 hover:text-indigo-300 text-sm font-medium"
-                        >
-                          View Certificate
-                        </a>
-                      )}
-                      {achievement.verificationUrl && (
-                        <a
-                          href={achievement.verificationUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-emerald-400 hover:text-emerald-300 text-sm font-medium"
-                        >
-                          Verify
-                        </a>
-                      )}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <h3 className="text-lg font-semibold text-text-primary mb-1">
+                          {achievement.title}
+                          {achievement.featured && (
+                            <span className="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/10 text-amber-400">
+                              Featured
+                            </span>
+                          )}
+                        </h3>
+                        <p className="text-sm text-text-secondary mb-2">{achievement.issuer}</p>
+                        {achievement.description && (
+                          <p className="text-text-secondary mb-3">{achievement.description}</p>
+                        )}
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm font-medium text-text-primary">
+                          {new Date(achievement.date).toLocaleDateString()}
+                        </p>
+                        <p className="text-xs text-text-tertiary">{achievement.category}</p>
+                      </div>
                     </div>
                     
-                    <div className="flex space-x-2">
-                      <Button variant="outline" size="sm">
-                        Edit
-                      </Button>
-                      <Button variant="ghost" size="sm">
-                        Delete
-                      </Button>
+                    <div className="flex items-center justify-between mt-4">
+                      <div className="flex space-x-2">
+                        {achievement.certificateUrl && (
+                          <a
+                            href={achievement.certificateUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-indigo-400 hover:text-indigo-300 text-sm font-medium"
+                          >
+                            View Certificate
+                          </a>
+                        )}
+                        {achievement.verificationUrl && (
+                          <a
+                            href={achievement.verificationUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-emerald-400 hover:text-emerald-300 text-sm font-medium"
+                          >
+                            Verify
+                          </a>
+                        )}
+                      </div>
+                      
+                      <div className="flex space-x-2">
+                        <Button variant="outline" size="sm">
+                          Edit
+                        </Button>
+                        <Button variant="ghost" size="sm">
+                          Delete
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
-
-      {achievements.length === 0 && (
+            );
+          })}
+        </div>
+      ) : (
         <div className="text-center py-12">
           <div className="max-w-md mx-auto">
             <TrophyIcon className="h-12 w-12 text-text-tertiary mx-auto mb-4" />
@@ -192,13 +198,20 @@ export const Achievements: React.FC = () => {
             <p className="text-text-secondary mb-6">
               Start building your achievement portfolio by adding your first award, certificate, or recognition.
             </p>
-            <Button>
+            <Button onClick={() => setIsFormOpen(true)}>
               <PlusIcon className="h-4 w-4 mr-2" />
               Add Your First Achievement
             </Button>
           </div>
         </div>
       )}
+
+      {/* Achievement Form Modal */}
+      <AchievementForm
+        isOpen={isFormOpen}
+        onClose={() => setIsFormOpen(false)}
+        onSuccess={handleAchievementCreated}
+      />
     </div>
   );
 };

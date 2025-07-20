@@ -50,11 +50,49 @@ export const createProject = async (req: AuthRequest, res: Response): Promise<vo
       return;
     }
 
-    const project = new Project({
+    // Clean up the data before saving
+    const projectData = {
       ...value,
       userId: req.user!._id
-    });
+    };
 
+    // Handle empty hackathon data
+    if (projectData.hackathon) {
+      const hackathon = projectData.hackathon;
+      // Remove hackathon object if all fields are empty
+      if (!hackathon.name && !hackathon.date && !hackathon.location && !hackathon.organizer) {
+        delete projectData.hackathon;
+      } else {
+        // Convert empty strings to undefined for optional fields
+        if (!hackathon.name) delete hackathon.name;
+        if (!hackathon.date) delete hackathon.date;
+        if (!hackathon.location) delete hackathon.location;
+        if (!hackathon.duration) delete hackathon.duration;
+        if (!hackathon.organizer) delete hackathon.organizer;
+        if (!hackathon.website) delete hackathon.website;
+      }
+    }
+
+    // Clean up empty links
+    if (projectData.links) {
+      Object.keys(projectData.links).forEach(key => {
+        if (!projectData.links[key]) {
+          delete projectData.links[key];
+        }
+      });
+    }
+
+    // Clean up empty team member fields
+    if (projectData.team) {
+      projectData.team = projectData.team.map(member => {
+        const cleanMember = { ...member };
+        if (!cleanMember.github) delete cleanMember.github;
+        if (!cleanMember.linkedin) delete cleanMember.linkedin;
+        return cleanMember;
+      });
+    }
+
+    const project = new Project(projectData);
     await project.save();
 
     res.status(201).json({

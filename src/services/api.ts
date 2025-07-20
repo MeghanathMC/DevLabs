@@ -112,6 +112,45 @@ export const projectsAPI = {
   },
 };
 
+export const competitionsAPI = {
+  async getCompetitions() {
+    try {
+      const response = await api.get('/competitions');
+      return response.data.competitions;
+    } catch (error: any) {
+      console.error('Error fetching competitions:', error);
+      return [];
+    }
+  },
+
+  async createCompetition(competitionData: any) {
+    try {
+      const response = await api.post('/competitions', competitionData);
+      return response.data.competition;
+    } catch (error: any) {
+      throw new Error(error.response?.data?.message || 'Failed to create competition');
+    }
+  },
+
+  async updateCompetition(id: string, competitionData: any) {
+    try {
+      const response = await api.put(`/competitions/${id}`, competitionData);
+      return response.data.competition;
+    } catch (error: any) {
+      throw new Error(error.response?.data?.message || 'Failed to update competition');
+    }
+  },
+
+  async deleteCompetition(id: string) {
+    try {
+      const response = await api.delete(`/competitions/${id}`);
+      return response.data;
+    } catch (error: any) {
+      throw new Error(error.response?.data?.message || 'Failed to delete competition');
+    }
+  },
+};
+
 export const achievementsAPI = {
   async getAchievements() {
     try {
@@ -159,7 +198,7 @@ export const analyticsAPI = {
     } catch (error: any) {
       console.error('Error fetching analytics:', error);
       // Return default stats if API fails
-      return {
+    return {
         totalProjects: 0,
         completedProjects: 0,
         ongoingProjects: 0,
@@ -192,6 +231,18 @@ export const userAPI = {
       return response.data.user;
     } catch (error: any) {
       throw new Error(error.response?.data?.message || 'Failed to fetch profile');
+    }
+  },
+
+  async changePassword(currentPassword: string, newPassword: string) {
+    try {
+      const response = await api.put('/users/change-password', {
+        currentPassword,
+        newPassword
+      });
+      return response.data;
+    } catch (error: any) {
+      throw new Error(error.response?.data?.message || 'Failed to change password');
     }
   },
 };
