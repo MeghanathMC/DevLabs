@@ -1,7 +1,7 @@
 {
-  "name": "hackfolio-backend",
+  "name": "devlabs-backend",
   "version": "1.0.0",
-  "description": "Backend API for HackFolio - Developer Portfolio Platform",
+  "description": "Backend API for DevLabs - Developer Portfolio Platform",
   "main": "dist/app.js",
   "scripts": {
     "dev": "nodemon src/app.ts",
@@ -22,7 +22,7 @@
     "express",
     "mongodb"
   ],
-  "author": "HackFolio Team",
+      "author": "DevLabs Team",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",

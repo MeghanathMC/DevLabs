@@ -1,4 +1,4 @@
-# HackFolio - Hackathon Portfolio Platform
+# DevLabs - Developer Portfolio Platform
 
 A comprehensive portfolio aggregation platform designed to help developers showcase their hackathon projects, achievements, and technical skills through professional, customizable portfolios.
 
@@ -63,8 +63,8 @@ src/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/hackfolio.git
-cd hackfolio
+git clone https://github.com/your-username/devlabs.git
+cd devlabs
 ```
 
 2. Install dependencies:
@@ -322,8 +322,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-For support, email support@hackfolio.com or join our Discord community.
+For support, email support@devlabs.com or join our Discord community.
 
 ---
 
-**HackFolio** - Showcase Your Hackathon Journey 🚀
+**DevLabs** - Showcase Your Developer Journey 🚀

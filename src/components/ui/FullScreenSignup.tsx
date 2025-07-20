@@ -148,7 +148,7 @@ export const FullScreenSignup = () => {
               Get Started
             </h2>
             <p className="text-left text-text-secondary">
-              Welcome to HackFolio — Let's build your portfolio
+              Welcome to DevLabs — Let's build your portfolio
             </p>
           </div>
 

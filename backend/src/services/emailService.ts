@@ -41,11 +41,11 @@ class EmailService {
   }
 
   async sendWelcomeEmail(email: string, firstName: string): Promise<void> {
-    const subject = 'Welcome to HackFolio!';
+    const subject = 'Welcome to DevLabs!';
     const html = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h1 style="color: #2563eb;">Welcome to HackFolio, ${firstName}!</h1>
-        <p>Thank you for joining HackFolio - the platform for showcasing your hackathon projects and achievements.</p>
+        <h1 style="color: #2563eb;">Welcome to DevLabs, ${firstName}!</h1>
+        <p>Thank you for joining DevLabs - the platform for showcasing your hackathon projects and achievements.</p>
         <p>Here's what you can do next:</p>
         <ul>
           <li>Complete your profile with your skills and social links</li>
@@ -54,7 +54,7 @@ class EmailService {
           <li>Customize your portfolio with our beautiful templates</li>
         </ul>
         <p>If you have any questions, feel free to reach out to our support team.</p>
-        <p>Best regards,<br>The HackFolio Team</p>
+        <p>Best regards,<br>The DevLabs Team</p>
       </div>
     `;
 
@@ -63,18 +63,18 @@ class EmailService {
 
   async sendPasswordResetEmail(email: string, resetToken: string): Promise<void> {
     const resetUrl = `${process.env.FRONTEND_URL}/reset-password?token=${resetToken}`;
-    const subject = 'Reset Your HackFolio Password';
+    const subject = 'Reset Your DevLabs Password';
     const html = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h1 style="color: #2563eb;">Reset Your Password</h1>
-        <p>You requested a password reset for your HackFolio account.</p>
+        <p>You requested a password reset for your DevLabs account.</p>
         <p>Click the button below to reset your password:</p>
         <a href="${resetUrl}" style="display: inline-block; background-color: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; margin: 20px 0;">Reset Password</a>
         <p>If the button doesn't work, copy and paste this link into your browser:</p>
         <p>${resetUrl}</p>
         <p>This link will expire in 1 hour.</p>
         <p>If you didn't request this password reset, please ignore this email.</p>
-        <p>Best regards,<br>The HackFolio Team</p>
+        <p>Best regards,<br>The DevLabs Team</p>
       </div>
     `;
 
@@ -83,16 +83,16 @@ class EmailService {
 
   async sendEmailVerification(email: string, verificationToken: string): Promise<void> {
     const verificationUrl = `${process.env.FRONTEND_URL}/verify-email?token=${verificationToken}`;
-    const subject = 'Verify Your HackFolio Email';
+    const subject = 'Verify Your DevLabs Email';
     const html = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h1 style="color: #2563eb;">Verify Your Email</h1>
-        <p>Please verify your email address to complete your HackFolio registration.</p>
+        <p>Please verify your email address to complete your DevLabs registration.</p>
         <p>Click the button below to verify your email:</p>
         <a href="${verificationUrl}" style="display: inline-block; background-color: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; margin: 20px 0;">Verify Email</a>
         <p>If the button doesn't work, copy and paste this link into your browser:</p>
         <p>${verificationUrl}</p>
-        <p>Best regards,<br>The HackFolio Team</p>
+        <p>Best regards,<br>The DevLabs Team</p>
       </div>
     `;
 
@@ -113,7 +113,7 @@ class EmailService {
           <li>Referrer: ${viewerInfo.referrer || 'Direct'}</li>
         </ul>
         <p>Keep up the great work on your portfolio!</p>
-        <p>Best regards,<br>The HackFolio Team</p>
+        <p>Best regards,<br>The DevLabs Team</p>
       </div>
     `;
 

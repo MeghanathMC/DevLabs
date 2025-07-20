@@ -71,7 +71,7 @@ function ElegantShape({
 }
 
 export default function ModernHeroSection({
-  badge = "HackFolio",
+      badge = "DevLabs",
   title1 = "Showcase Your",
   title2 = "Hackathon Journey",
 }: {

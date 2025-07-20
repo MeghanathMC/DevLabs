@@ -84,7 +84,7 @@ export const createProject = async (req: AuthRequest, res: Response): Promise<vo
 
     // Clean up empty team member fields
     if (projectData.team) {
-      projectData.team = projectData.team.map(member => {
+      projectData.team = projectData.team.map((member: { name: string; role: string; github?: string; linkedin?: string }) => {
         const cleanMember = { ...member };
         if (!cleanMember.github) delete cleanMember.github;
         if (!cleanMember.linkedin) delete cleanMember.linkedin;

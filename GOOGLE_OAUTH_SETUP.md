@@ -1,6 +1,6 @@
 # Google OAuth Setup Guide
 
-To enable Google OAuth authentication in HackFolio, follow these steps:
+To enable Google OAuth authentication in DevLabs, follow these steps:
 
 ## 1. Create a Google Cloud Project
 

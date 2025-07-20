@@ -1,9 +1,9 @@
-# HackFolio - Updated Product Requirements Document
+# DevLabs - Updated Product Requirements Document
 
 ## 1. Executive Summary
 
 ### 1.1 Product Vision
-HackFolio is a comprehensive portfolio aggregation platform designed to help developers showcase their hackathon projects, achievements, and technical skills through professional, customizable portfolios.
+DevLabs is a comprehensive portfolio aggregation platform designed to help developers showcase their hackathon projects, achievements, and technical skills through professional, customizable portfolios.
 
 ### 1.2 Problem Statement
 Developers participate in numerous hackathons and coding competitions but lack a centralized platform to:
@@ -466,6 +466,6 @@ GET    /api/discover/recommended  # Get personalized recommendations
 
 ## 12. Conclusion
 
-HackFolio represents a comprehensive solution for developers to showcase their work professionally. The platform combines project management, achievement tracking, and portfolio generation into a cohesive experience that helps developers advance their careers and connect with opportunities.
+DevLabs represents a comprehensive solution for developers to showcase their work professionally. The platform combines project management, achievement tracking, and portfolio generation into a cohesive experience that helps developers advance their careers and connect with opportunities.
 
-The technical architecture is designed for scalability, security, and performance, while the user experience prioritizes simplicity and professional presentation. With careful execution of this PRD, HackFolio can become the go-to platform for developer portfolio management and showcase.
+The technical architecture is designed for scalability, security, and performance, while the user experience prioritizes simplicity and professional presentation. With careful execution of this PRD, DevLabs can become the go-to platform for developer portfolio management and showcase.

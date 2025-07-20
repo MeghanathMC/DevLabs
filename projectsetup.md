@@ -1,11 +1,11 @@
-# HackFolio Project Structure Diagram
+# DevLabs Project Structure Diagram
 
 
 ## 📁 Root Directory Structure
 
 
 ```
-hackfolio/
+devlabs/
 ├── 📁 .bolt/                    # Bolt Configuration
 │   ├── 📄 config.json          # Template configuration
 │   └── 📄 prompt               # Design guidelines
@@ -571,4 +571,4 @@ interface Analytics {
 ---
 
 
-*This updated diagram reflects the comprehensive HackFolio project structure based on the updated PRD, including all enhanced features, security measures, and performance optimizations.*
+*This updated diagram reflects the comprehensive DevLabs project structure based on the updated PRD, including all enhanced features, security measures, and performance optimizations.*

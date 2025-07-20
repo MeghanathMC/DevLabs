@@ -1,4 +1,4 @@
-# HackFolio Core Features
+# DevLabs Core Features
 
 ## 🔐 Authentication & User Management
 

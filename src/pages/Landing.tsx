@@ -65,7 +65,7 @@ export const Landing: React.FC = () => {
       {/* CTA Section */}
       <CTASection
         badge={{
-          text: "HackFolio"
+          text: "DevLabs"
         }}
         title="Ready to Build Your Portfolio?"
         description="Join thousands of developers who are showcasing their hackathon projects and landing their dream jobs."

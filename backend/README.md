@@ -1,6 +1,6 @@
-# HackFolio Backend API
+# DevLabs Backend API
 
-A comprehensive Node.js/Express backend API for the HackFolio platform - a developer portfolio aggregation system for showcasing hackathon projects and achievements.
+A comprehensive Node.js/Express backend API for the DevLabs platform - a developer portfolio aggregation system for showcasing hackathon projects and achievements.
 
 ## 🚀 Features
 
@@ -63,7 +63,7 @@ backend/
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd hackfolio-backend
+   cd devlabs-backend
    ```
 
 2. **Install dependencies**
@@ -80,7 +80,7 @@ backend/
    ```env
    NODE_ENV=development
    PORT=5000
-   MONGODB_URI=mongodb://localhost:27017/hackfolio
+   MONGODB_URI=mongodb://localhost:27017/devlabs
    JWT_SECRET=your_super_secret_jwt_key_here
    CLOUDINARY_CLOUD_NAME=your_cloud_name
    CLOUDINARY_API_KEY=your_api_key

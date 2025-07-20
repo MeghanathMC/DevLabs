@@ -60,7 +60,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
           animate={{ opacity: 1 }}
           className="text-xl font-bold text-text-primary whitespace-pre"
         >
-          HackFolio
+          DevLabs
         </motion.span>
       </div>
     );

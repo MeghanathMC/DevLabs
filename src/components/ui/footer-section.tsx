@@ -33,7 +33,7 @@ function FooterSection() {
               <div className="h-8 w-8 bg-gradient-to-br from-indigo-500 to-rose-500 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">H</span>
               </div>
-              <h2 className="text-2xl font-bold tracking-tight">HackFolio</h2>
+              <h2 className="text-2xl font-bold tracking-tight">DevLabs</h2>
             </div>
             <p className="mb-6 text-text-secondary">
               Showcase your hackathon journey and build stunning portfolios that stand out to recruiters.
@@ -152,7 +152,7 @@ function FooterSection() {
               <span className="text-white font-bold text-xs">H</span>
             </div>
             <p className="text-sm text-text-tertiary">
-              © 2024 HackFolio. Built for developers, by developers.
+              © 2024 DevLabs. Built for developers, by developers.
             </p>
           </div>
           <nav className="flex gap-4 text-sm">

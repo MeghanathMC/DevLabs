@@ -374,7 +374,7 @@ export const PublicPortfolio: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <p className="mb-4">
             © 2024 {portfolioData.user.firstName} {portfolioData.user.lastName}. 
-            Portfolio built with <span className="text-indigo-400">HackFolio</span>.
+            Portfolio built with <span className="text-indigo-400">DevLabs</span>.
           </p>
           <div className="flex justify-center space-x-6">
             <a href={portfolioData.user.github} target="_blank" rel="noopener noreferrer" className="hover:text-indigo-400">

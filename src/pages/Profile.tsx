@@ -198,7 +198,7 @@ export const Profile: React.FC = () => {
             </h2>
             <p className="text-text-secondary">{user?.email}</p>
             <p className="text-sm text-text-tertiary mt-1">
-              Portfolio: hackfolio.com/portfolio/{user?.portfolioSlug || 'your-username'}
+              Portfolio: devlabs.com/portfolio/{user?.portfolioSlug || 'your-username'}
             </p>
           </div>
         </div>

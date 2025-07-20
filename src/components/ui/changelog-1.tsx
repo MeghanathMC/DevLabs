@@ -39,7 +39,7 @@ export const defaultEntries: ChangelogEntry[] = [
     ],
     image: "https://images.pexels.com/photos/590016/pexels-photo-590016.jpg?auto=compress&cs=tinysrgb&w=600",
     button: {
-      url: "https://hackfolio.com",
+      url: "https://devlabs.com",
       text: "Learn more",
     },
   },
@@ -78,7 +78,7 @@ export const defaultEntries: ChangelogEntry[] = [
       "Introducing a new platform to help you manage your projects and tasks. We are excited to launch our platform and help you get started. We are always working to improve our platform and your experience.",
     image: "https://images.pexels.com/photos/590016/pexels-photo-590016.jpg?auto=compress&cs=tinysrgb&w=600",
     button: {
-      url: "https://hackfolio.com",
+      url: "https://devlabs.com",
       text: "Learn more",
     },
   },

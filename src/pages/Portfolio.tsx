@@ -34,7 +34,7 @@ export const Portfolio: React.FC = () => {
     }
   ];
 
-  const portfolioUrl = `https://hackfolio.com/portfolio/${user?.portfolioSlug || 'your-username'}`;
+  const portfolioUrl = `https://devlabs.com/portfolio/${user?.portfolioSlug || 'your-username'}`;
 
   return (
     <div className="space-y-8">

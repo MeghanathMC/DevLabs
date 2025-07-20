@@ -1035,14 +1035,14 @@ const config = {
     enableHotReload: true,
   },
   staging: {
-    apiUrl: 'https://api-staging.hackfolio.com/v1',
+    apiUrl: 'https://api-staging.devlabs.com/v1',
     enableLogging: true,
     enableErrorBoundary: true,
     enablePerformanceMonitoring: true,
     enableHotReload: false,
   },
   production: {
-    apiUrl: 'https://api.hackfolio.com/v1',
+    apiUrl: 'https://api.devlabs.com/v1',
     enableLogging: false,
     enableErrorBoundary: true,
     enablePerformanceMonitoring: true,
@@ -1070,8 +1070,8 @@ interface SEOProps {
 }
 
 const SEOHead: React.FC<SEOProps> = ({
-  title = 'HackFolio - Showcase Your Hackathon Projects',
-  description = 'Create stunning portfolios to showcase your hackathon projects, achievements, and technical skills. Build your developer brand with HackFolio.',
+  title = 'DevLabs - Showcase Your Developer Projects',
+  description = 'Create stunning portfolios to showcase your hackathon projects, achievements, and technical skills. Build your developer brand with DevLabs.',
   keywords = ['hackathon', 'portfolio', 'developer', 'projects', 'showcase'],
   image = '/og-image.jpg',
   url = window.location.href,
@@ -1614,7 +1614,7 @@ Every line of code you write should reflect this level of responsibility and exp
 
 **Build with pride. Code with purpose. Lead by example.**
 
-🚀 **Now go build something amazing!**# HackFolio - Senior Engineer Guidelines & Best Practices
+🚀 **Now go build something amazing!**# DevLabs - Senior Engineer Guidelines & Best Practices
 
 ## 🎯 **ROLE & MINDSET**
 

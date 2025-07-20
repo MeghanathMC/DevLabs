@@ -1,10 +1,10 @@
-# HackFolio - Hackathon Portfolio Aggregator
+# DevLabs - Developer Portfolio Platform
 
 
 ## Project Overview
 
 
-HackFolio is a comprehensive web application designed to help developers showcase their hackathon projects, achievements, and skills through professional portfolios. The platform provides tools for project management, achievement tracking, analytics, and customizable portfolio generation.
+DevLabs is a comprehensive web application designed to help developers showcase their hackathon projects, achievements, and skills through professional portfolios. The platform provides tools for project management, achievement tracking, analytics, and customizable portfolio generation.
 
 
 ## Tech Stack
@@ -26,7 +26,7 @@ HackFolio is a comprehensive web application designed to help developers showcas
 
 
 ```
-hackfolio/
+devlabs/
 ├── .bolt/                          # Bolt configuration
 │   ├── config.json                 # Bolt template config
 │   └── prompt                      # Design guidelines
@@ -367,6 +367,6 @@ npm run lint     # Code linting
 ---
 
 
-*This document serves as the comprehensive guide for the HackFolio project structure and development guidelines.*
+*This document serves as the comprehensive guide for the DevLabs project structure and development guidelines.*
 
 

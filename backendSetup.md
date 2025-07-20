@@ -1,9 +1,9 @@
-# HackFolio - Backend Setup Guide
+# DevLabs - Backend Setup Guide
 
 ## 1. Project Structure
 
 ```
-hackfolio-backend/
+devlabs-backend/
 ├── src/
 │   ├── controllers/           # Route controllers
 │   │   ├── authController.ts
@@ -71,8 +71,8 @@ hackfolio-backend/
 ### 2.1 Initialize Project
 ```bash
 # Create project directory
-mkdir hackfolio-backend
-cd hackfolio-backend
+mkdir devlabs-backend
+cd devlabs-backend
 
 # Initialize npm project
 npm init -y
@@ -164,8 +164,8 @@ PORT=5000
 API_VERSION=v1
 
 # Database
-MONGODB_URI=mongodb://localhost:27017/hackfolio
-MONGODB_TEST_URI=mongodb://localhost:27017/hackfolio_test
+MONGODB_URI=mongodb://localhost:27017/devlabs
+MONGODB_TEST_URI=mongodb://localhost:27017/devlabs_test
 
 # JWT Configuration
 JWT_SECRET=your_super_secret_jwt_key_here
@@ -179,7 +179,7 @@ CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
 
 # Email Configuration
-EMAIL_FROM=noreply@hackfolio.com
+EMAIL_FROM=noreply@devlabs.com
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=your_email@gmail.com
@@ -1185,4 +1185,4 @@ npm run seed
 npm run db:reset
 ```
 
-This backend setup provides a solid foundation for your HackFolio application with proper authentication, project management, file upload, and error handling systems in place.
+This backend setup provides a solid foundation for your DevLabs application with proper authentication, project management, file upload, and error handling systems in place.
