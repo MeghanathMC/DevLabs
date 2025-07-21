@@ -58,16 +58,18 @@ userSchema.methods.comparePassword = async function(password) {
 
 const User = mongoose.model('User', userSchema);
 
-async function createTestUser() {
+async function createDemoUser() {
   try {
-    console.log('Creating demo user...');
+    console.log('🎯 Creating Demo User for DevLabs...');
+    console.log('=====================================');
     
     // Check if demo user already exists
     const existingUser = await User.findOne({ email: 'demo@example.com' });
     if (existingUser) {
-      console.log('Demo user already exists!');
-      console.log('Email: demo@example.com');
-      console.log('Password: password');
+      console.log('✅ Demo user already exists!');
+      console.log('📧 Email: demo@example.com');
+      console.log('🔑 Password: password');
+      console.log('🌐 Portfolio URL: /portfolio/demo-user');
       mongoose.connection.close();
       return;
     }
@@ -76,18 +78,22 @@ async function createTestUser() {
     const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS || '12');
     const hashedPassword = await bcrypt.hash('password', saltRounds);
     
-    // Create demo user
+    // Create demo user with comprehensive profile
     const demoUser = new User({
       email: 'demo@example.com',
       password: hashedPassword,
       profile: {
         firstName: 'Demo',
         lastName: 'User',
-        bio: 'This is a demo account for testing the DevLabs platform. Feel free to explore all the features!',
-        location: 'Demo City',
+        bio: 'This is a demo account for testing the DevLabs platform. Feel free to explore all the features and see how the portfolio system works!',
+        location: 'Demo City, DC',
         university: 'Demo University',
         graduationYear: 2024,
-        skills: ['JavaScript', 'React', 'Node.js', 'MongoDB', 'TypeScript', 'Tailwind CSS'],
+        skills: [
+          'JavaScript', 'React', 'Node.js', 'MongoDB', 
+          'TypeScript', 'Tailwind CSS', 'Express.js', 
+          'Git', 'REST APIs', 'JWT Authentication'
+        ],
         socialLinks: {
           github: 'https://github.com/demo-user',
           linkedin: 'https://linkedin.com/in/demo-user',
@@ -120,16 +126,22 @@ async function createTestUser() {
     });
     
     await demoUser.save();
-    console.log('✅ Demo user created successfully!');
-    console.log('Email: demo@example.com');
-    console.log('Password: password');
-    console.log('Portfolio URL: /portfolio/demo-user');
+    
+    console.log('🎉 Demo user created successfully!');
+    console.log('=====================================');
+    console.log('📧 Email: demo@example.com');
+    console.log('🔑 Password: password');
+    console.log('🌐 Portfolio URL: /portfolio/demo-user');
+    console.log('📱 You can now use these credentials to login!');
+    console.log('=====================================');
     
   } catch (error) {
     console.error('❌ Error creating demo user:', error);
+    console.error('Error details:', error.message);
   } finally {
     mongoose.connection.close();
   }
 }
 
-createTestUser(); 
+// Run the function
+createDemoUser(); 

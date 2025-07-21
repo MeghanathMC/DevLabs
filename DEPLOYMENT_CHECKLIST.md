@@ -4,7 +4,11 @@
 **URL:** https://devlabs-delta.vercel.app/
 **Status:** ✅ Deployed Successfully
 
-## 🔧 Next Steps - Backend Deployment
+## ✅ Backend Status
+**URL:** https://devlabs-1.onrender.com
+**Status:** ✅ Deployed Successfully
+
+## 🔧 Next Steps - Complete Setup
 
 ### 1. Set up MongoDB Atlas
 - [ ] Create MongoDB Atlas account at https://cloud.mongodb.com
@@ -46,7 +50,7 @@ After deployment, you'll get a URL like: `https://devlabs-backend.onrender.com`
 - [ ] Go to Settings → Environment Variables
 - [ ] Add/Update:
   ```
-  VITE_API_URL=https://devlabs-backend.onrender.com/api/v1
+  VITE_API_URL=https://devlabs-1.onrender.com/api/v1
   VITE_GOOGLE_CLIENT_ID=your-google-client-id
   ```
 
@@ -67,8 +71,8 @@ After deployment, you'll get a URL like: `https://devlabs-backend.onrender.com`
 
 ## 🔗 Your URLs
 - **Frontend:** https://devlabs-delta.vercel.app/
-- **Backend:** https://devlabs-backend.onrender.com (after deployment)
-- **API Endpoint:** https://devlabs-backend.onrender.com/api/v1
+- **Backend:** https://devlabs-1.onrender.com
+- **API Endpoint:** https://devlabs-1.onrender.com/api/v1
 
 ## 🛠️ Troubleshooting
 If you encounter issues:

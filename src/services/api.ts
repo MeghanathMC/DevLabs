@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Backend API base URL - handles both development and production
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://devlabs-1.onrender.com/api/v1';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
