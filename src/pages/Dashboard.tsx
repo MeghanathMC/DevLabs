@@ -126,24 +126,24 @@ export const Dashboard: React.FC = () => {
           <h1 className="text-h1 text-text-primary">Dashboard</h1>
           <p className="mt-2 text-body text-text-secondary">Your central hub for projects, competitions, and achievements.</p>
         </div>
-        <div className="flex flex-wrap gap-2 sm:gap-3">
-          <Link to="/app/competitions" className="flex-1 sm:flex-none">
-            <Button variant="secondary" size="sm" className="w-full sm:w-auto">
-              <PlusIcon className="h-4 w-4 mr-2" />
+        <div className="flex flex-wrap gap-2">
+          <Link to="/app/competitions">
+            <Button variant="secondary" size="sm" className="text-xs px-3 py-2 h-8">
+              <PlusIcon className="h-3 w-3 mr-1" />
               <span className="hidden sm:inline">Add Competition</span>
               <span className="sm:hidden">Competition</span>
             </Button>
           </Link>
-          <Link to="/app/projects" className="flex-1 sm:flex-none">
-            <Button variant="secondary" size="sm" className="w-full sm:w-auto">
-              <PlusIcon className="h-4 w-4 mr-2" />
+          <Link to="/app/projects">
+            <Button variant="secondary" size="sm" className="text-xs px-3 py-2 h-8">
+              <PlusIcon className="h-3 w-3 mr-1" />
               <span className="hidden sm:inline">New Project</span>
               <span className="sm:hidden">Project</span>
             </Button>
           </Link>
-          <Link to="/app/achievements" className="flex-1 sm:flex-none">
-            <Button size="sm" className="w-full sm:w-auto">
-              <TrophyIcon className="h-4 w-4 mr-2" />
+          <Link to="/app/achievements">
+            <Button size="sm" className="text-xs px-3 py-2 h-8">
+              <TrophyIcon className="h-3 w-3 mr-1" />
               <span className="hidden sm:inline">Add Achievement</span>
               <span className="sm:hidden">Achievement</span>
             </Button>

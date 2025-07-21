@@ -20,7 +20,7 @@ const schema = yup.object({
 
 type RegisterForm = yup.InferType<typeof schema>;
 
-export const Register: React.FC = () => {
+export const SignUp: React.FC = () => {
   const { register: registerUser } = useAuth();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);

@@ -124,7 +124,7 @@ export const Landing: React.FC = () => {
         description="Join thousands of developers who are showcasing their hackathon projects and landing their dream jobs."
         action={{
           text: "Get Started for Free",
-          href: "/register",
+          href: "/signup",
           variant: "default"
         }}
         className="py-20 bg-gradient-to-r from-indigo-500 to-rose-500"

@@ -62,7 +62,7 @@ function FooterSection() {
               <a href="/portfolio/demo" className="block transition-colors hover:text-indigo-400 text-text-secondary">
                 Demo Portfolio
               </a>
-              <a href="/register" className="block transition-colors hover:text-indigo-400 text-text-secondary">
+              <a href="/signup" className="block transition-colors hover:text-indigo-400 text-text-secondary">
                 Get Started
               </a>
               <a href="/login" className="block transition-colors hover:text-indigo-400 text-text-secondary">

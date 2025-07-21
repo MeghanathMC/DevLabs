@@ -3,10 +3,11 @@
 import { RocketLaunchIcon } from '@heroicons/react/24/outline';
 import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
-import { authAPI } from '../../services/api';
+import { useAuth } from '../../contexts/AuthContext';
 
  
 export const FullScreenSignup = () => {
+  const { register: registerUser } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -74,8 +75,8 @@ export const FullScreenSignup = () => {
         console.log("Form submitted!");
         console.log("Email:", email);
         
-        // Call the backend API
-        await authAPI.register({
+        // Use AuthContext to register user
+        await registerUser({
           firstName,
           lastName,
           email,
@@ -93,10 +94,8 @@ export const FullScreenSignup = () => {
         setLastName("");
         setSubmitted(false);
         
-        // Redirect to dashboard after 2 seconds
-        setTimeout(() => {
-          navigate('/app/dashboard');
-        }, 2000);
+        // Redirect to dashboard immediately
+        navigate('/app/dashboard');
         
       } catch (err: any) {
         // Handle specific error messages
@@ -179,7 +178,7 @@ export const FullScreenSignup = () => {
                 </svg>
                 <div>
                   <p className="font-medium">Account created successfully!</p>
-                  <p className="text-sm text-green-400/80">Redirecting to dashboard...</p>
+                  <p className="text-sm text-green-400/80">Welcome to DevLabs!</p>
                 </div>
               </div>
             </div>
@@ -200,7 +199,7 @@ export const FullScreenSignup = () => {
                         to="/login" 
                         className="text-sm text-primary-400 hover:text-primary-300 underline"
                       >
-                        Click here to login instead
+                        Click here to sign in instead
                       </Link>
                     </div>
                   )}
@@ -317,13 +316,13 @@ export const FullScreenSignup = () => {
               className="w-full btn-primary mt-4"
               disabled={loading || success}
             >
-              {loading ? 'Creating account...' : success ? 'Account Created!' : 'Create a new account'}
+              {loading ? 'Creating account...' : success ? 'Account Created!' : 'Sign up'}
             </button>
  
             <div className="text-center text-text-secondary text-sm mt-4">
-              Already have account?{" "}
+              Already have an account?{" "}
               <Link to="/login" className="text-primary-400 font-medium hover:text-primary-500 transition-colors">
-                Login
+                Sign in
               </Link>
             </div>
           </form>

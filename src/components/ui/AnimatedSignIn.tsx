@@ -134,7 +134,7 @@ const AnimatedSignIn: React.FC = () => {
                 <p className={`text-sm ${theme === 'dark' ? 'text-text-secondary' : 'text-gray-600'}`}>
                   Don't have an account?{' '}
                   <Link 
-                    to="/register" 
+                    to="/signup" 
                     className={`font-medium ${
                       theme === 'dark' ? 'text-primary-400 hover:text-primary-500' : 'text-primary-600 hover:text-primary-500'
                     }`}

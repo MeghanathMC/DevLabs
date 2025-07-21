@@ -182,7 +182,7 @@ export default function ModernHeroSection({
           <motion.div custom={3} variants={fadeUpVariants} initial="hidden" animate="visible">
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link 
-                to="/register" 
+                to="/signup" 
                 className="bg-gradient-to-r from-indigo-500 to-rose-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-indigo-600 hover:to-rose-600 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 inline-flex items-center"
               >
                 Start Building Free

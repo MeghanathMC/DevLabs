@@ -4,7 +4,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import { Layout } from './components/layout/Layout';
 import { Landing } from './pages/Landing';
 import { Login } from './pages/auth/Login';
-import { Register } from './pages/auth/Register';
+import { SignUp } from './pages/auth/Register';
 import { Dashboard } from './pages/Dashboard';
 import { Projects } from './pages/Projects';
 import { Competitions } from './pages/Competitions';
@@ -31,7 +31,7 @@ function App() {
           {/* Public routes */}
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/portfolio/:slug" element={<PublicPortfolio />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
           
