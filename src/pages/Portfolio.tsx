@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { EyeIcon, ShareIcon, Cog6ToothIcon, DocumentArrowDownIcon } from '@heroicons/react/24/outline';
-import { Button } from '../components/ui/Button';
+import { Button } from '../components/ui/button';
 import { useAuth } from '../contexts/AuthContext';
 
 export const Portfolio: React.FC = () => {

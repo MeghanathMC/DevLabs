@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { XMarkIcon, PlusIcon } from '@heroicons/react/24/outline';
-import { Button } from './Button';
+import { Button } from './button';
 import { Input } from './Input';
 import { achievementsAPI } from '../../services/api';
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { PlusIcon, TrophyIcon, AcademicCapIcon, StarIcon } from '@heroicons/react/24/outline';
 import { achievementsAPI } from '../services/api';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
-import { Button } from '../components/ui/Button';
+import { Button } from '../components/ui/button';
 import { AchievementForm } from '../components/ui/AchievementForm';
 
 interface Achievement {

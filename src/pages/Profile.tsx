@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CameraIcon, PencilIcon, CheckIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useAuth } from '../contexts/AuthContext';
-import { Button } from '../components/ui/Button';
+import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/Input';
 import { userAPI } from '../services/api';
 

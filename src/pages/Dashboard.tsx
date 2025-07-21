@@ -13,7 +13,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { analyticsAPI, projectsAPI, achievementsAPI } from '../services/api';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
-import { Button } from '../components/ui/Button';
+import { Button } from '../components/ui/button';
 import { FeatureCard } from '../components/ui/grid-feature-cards';
 
 interface DashboardStats {

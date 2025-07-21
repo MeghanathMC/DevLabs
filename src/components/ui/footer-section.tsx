@@ -3,8 +3,6 @@
 import * as React from "react"
 import { Button } from "./button"
 import { Input } from "./Input"
-import { Label } from "./label"
-import { Switch } from "./switch"
 import {
   Tooltip,
   TooltipContent,

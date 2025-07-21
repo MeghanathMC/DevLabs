@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useAuth } from '../../contexts/AuthContext';
-import { Button } from '../../components/ui/Button';
+import { Button } from '../../components/ui/button';
 import { Input } from '../../components/ui/Input';
 import { FullScreenSignup } from '../../components/ui/FullScreenSignup';
 

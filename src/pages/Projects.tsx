@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { PlusIcon, FunnelIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { projectsAPI } from '../services/api';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
-import { Button } from '../components/ui/Button';
+import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/Input';
 import { ProjectForm } from '../components/ui/ProjectForm';
 

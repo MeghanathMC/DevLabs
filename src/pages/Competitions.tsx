@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { PlusIcon, CalendarIcon, MapPinIcon, UsersIcon } from '@heroicons/react/24/outline';
 import { ArrowUpRight } from 'lucide-react';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
-import { Button } from '../components/ui/Button';
+import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { competitionsAPI } from '../services/api';
 
