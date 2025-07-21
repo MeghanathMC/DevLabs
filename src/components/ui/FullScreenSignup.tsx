@@ -99,7 +99,26 @@ export const FullScreenSignup = () => {
         }, 2000);
         
       } catch (err: any) {
-        setError(err.message || 'Registration failed');
+        // Handle specific error messages
+        let errorMessage = 'Registration failed';
+        
+        if (err.message) {
+          if (err.message.includes('User already exists')) {
+            errorMessage = 'An account with this email already exists. Please try logging in instead.';
+          } else if (err.message.includes('Validation error')) {
+            errorMessage = 'Please check your input and try again.';
+          } else if (err.message.includes('email')) {
+            errorMessage = 'Please enter a valid email address.';
+          } else if (err.message.includes('password')) {
+            errorMessage = 'Password must be at least 6 characters long.';
+          } else if (err.message.includes('firstName') || err.message.includes('lastName')) {
+            errorMessage = 'Please enter your first and last name.';
+          } else {
+            errorMessage = err.message;
+          }
+        }
+        
+        setError(errorMessage);
         setSuccess(false);
         console.error('Registration error:', err);
       } finally {
@@ -167,8 +186,26 @@ export const FullScreenSignup = () => {
           )}
 
           {error && (
-            <div className="mb-4 p-3 bg-red-500/10 border border-red-500/30 text-red-400 rounded-lg text-sm">
-              {error}
+            <div className="mb-4 p-4 bg-red-500/10 border border-red-500/30 text-red-400 rounded-lg">
+              <div className="flex items-start">
+                <svg className="h-5 w-5 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                </svg>
+                <div className="flex-1">
+                  <p className="font-medium text-sm">Registration Error</p>
+                  <p className="text-sm text-red-400/80 mt-1">{error}</p>
+                  {error.includes('already exists') && (
+                    <div className="mt-2">
+                      <Link 
+                        to="/login" 
+                        className="text-sm text-primary-400 hover:text-primary-300 underline"
+                      >
+                        Click here to login instead
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           )}
  
@@ -234,7 +271,7 @@ export const FullScreenSignup = () => {
               <input
                 type="email"
                 id="email"
-                placeholder="demo@example.com"
+                placeholder="Enter your email"
                 className={`text-sm w-full py-3 px-4 border rounded-lg focus:outline-none focus:ring-2 bg-bg-tertiary text-text-primary placeholder-text-tertiary focus:ring-primary-500 transition-colors ${
                   emailError ? "border-error" : "border-primary-500/20"
                 }`}

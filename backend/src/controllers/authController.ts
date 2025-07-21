@@ -8,6 +8,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
   try {
     const { error, value } = validateRegister(req.body);
     if (error) {
+      console.log('Registration validation error:', error.details[0]?.message);
       res.status(400).json({ error: error.details[0]?.message || 'Validation error' });
       return;
     }
