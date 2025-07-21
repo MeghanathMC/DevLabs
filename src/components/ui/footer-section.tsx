@@ -11,7 +11,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "./tooltip"
-import { Github, Linkedin, Send, Twitter } from "lucide-react"
+import { Github, Linkedin, Send, Twitter, Moon, Sun } from "lucide-react"
 
 function FooterSection() {
   const [isDarkMode, setIsDarkMode] = React.useState(true)
@@ -46,8 +46,7 @@ function FooterSection() {
               />
               <Button
                 type="submit"
-                size="icon"
-                className="absolute right-1 top-1 h-8 w-8 rounded-full bg-gradient-to-r from-indigo-500 to-rose-500 text-white transition-transform hover:scale-105"
+                className="absolute right-1 top-1 h-8 w-8 rounded-full bg-gradient-to-r from-indigo-500 to-rose-500 text-white transition-transform hover:scale-105 p-0"
               >
                 <Send className="h-4 w-4" />
                 <span className="sr-only">Subscribe</span>
@@ -104,7 +103,7 @@ function FooterSection() {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="secondary" size="icon" className="rounded-full border-indigo-500/20 bg-bg-tertiary hover:bg-indigo-500/10 hover:border-indigo-500/40">
+                    <Button variant="secondary" className="h-10 w-10 rounded-full border-indigo-500/20 bg-bg-tertiary hover:bg-indigo-500/10 hover:border-indigo-500/40 p-0">
                       <Github className="h-4 w-4 text-text-secondary" />
                       <span className="sr-only">GitHub</span>
                     </Button>
@@ -118,7 +117,7 @@ function FooterSection() {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="secondary" size="icon" className="rounded-full border-indigo-500/20 bg-bg-tertiary hover:bg-indigo-500/10 hover:border-indigo-500/40">
+                    <Button variant="secondary" className="h-10 w-10 rounded-full border-indigo-500/20 bg-bg-tertiary hover:bg-indigo-500/10 hover:border-indigo-500/40 p-0">
                       <Twitter className="h-4 w-4 text-text-secondary" />
                       <span className="sr-only">Twitter</span>
                     </Button>
@@ -132,13 +131,35 @@ function FooterSection() {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="secondary" size="icon" className="rounded-full border-indigo-500/20 bg-bg-tertiary hover:bg-indigo-500/10 hover:border-indigo-500/40">
+                    <Button variant="secondary" className="h-10 w-10 rounded-full border-indigo-500/20 bg-bg-tertiary hover:bg-indigo-500/10 hover:border-indigo-500/40 p-0">
                       <Linkedin className="h-4 w-4 text-text-secondary" />
                       <span className="sr-only">LinkedIn</span>
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>Connect with us on LinkedIn</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+              
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button 
+                      variant="secondary" 
+                      className="h-10 w-10 rounded-full border-indigo-500/20 bg-bg-tertiary hover:bg-indigo-500/10 hover:border-indigo-500/40 p-0"
+                      onClick={() => setIsDarkMode(!isDarkMode)}
+                    >
+                      {isDarkMode ? (
+                        <Sun className="h-4 w-4 text-text-secondary" />
+                      ) : (
+                        <Moon className="h-4 w-4 text-text-secondary" />
+                      )}
+                      <span className="sr-only">Toggle dark mode</span>
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
