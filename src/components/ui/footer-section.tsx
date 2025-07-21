@@ -192,5 +192,4 @@ function FooterSection() {
     </footer>
   )
 }
-
 export { FooterSection }
