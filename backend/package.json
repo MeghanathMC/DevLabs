@@ -12,7 +12,8 @@
     "test:coverage": "jest --coverage",
     "seed": "ts-node src/scripts/seed.ts",
     "db:reset": "ts-node src/scripts/resetDb.ts",
-    "create-demo": "node create-demo-user.js"
+    "create-demo": "node create-demo-user.js",
+    "check-demo": "node check-demo-user.js"
   },
   "keywords": [
     "portfolio",

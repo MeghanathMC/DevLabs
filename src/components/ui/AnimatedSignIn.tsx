@@ -159,14 +159,7 @@ const AnimatedSignIn: React.FC = () => {
                 </p>
               </div>
 
-              {/* Demo credentials */}
-              <div className="mb-6 p-4 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 rounded-lg">
-                <h3 className="text-sm font-medium text-cyan-400 mb-2">Demo Account</h3>
-                <p className="text-xs text-cyan-400/80">
-                  <strong>Email:</strong> demo@example.com<br />
-                  <strong>Password:</strong> password
-                </p>
-              </div>
+
               
               <form onSubmit={handleSignIn} className="space-y-6">
                 {error && (
@@ -196,7 +189,7 @@ const AnimatedSignIn: React.FC = () => {
                           ? 'bg-bg-tertiary border-indigo-500/20 text-text-primary placeholder:text-text-tertiary focus:border-indigo-500 focus:ring-indigo-500/10' 
                           : 'bg-white border-gray-300 text-gray-900 placeholder:text-gray-400 focus:border-indigo-500 focus:ring-indigo-500/10'
                       }`}
-                      placeholder="demo@example.com"
+                      placeholder="Enter your email"
                       required
                     />
                   </div>
@@ -223,7 +216,7 @@ const AnimatedSignIn: React.FC = () => {
                           ? 'bg-bg-tertiary border-indigo-500/20 text-text-primary placeholder:text-text-tertiary focus:border-indigo-500 focus:ring-indigo-500/10' 
                           : 'bg-white border-gray-300 text-gray-900 placeholder:text-gray-400 focus:border-indigo-500 focus:ring-indigo-500/10'
                       }`}
-                      placeholder="password"
+                      placeholder="Enter your password"
                       required
                     />
                     <button

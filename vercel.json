@@ -10,7 +10,7 @@
   ],
   "headers": [
     {
-      "source": "/api/(.*)",
+      "source": "/(.*)",
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
@@ -28,6 +28,6 @@
     }
   ],
   "env": {
-    "VITE_API_URL": "https://devlabs-backend.onrender.com/api/v1"
+    "VITE_API_URL": "https://devlabs-1.onrender.com/api/v1"
   }
 } 

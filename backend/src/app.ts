@@ -33,7 +33,8 @@ const allowedOrigins = [
   'http://localhost:3000',
   'https://devlabs-delta.vercel.app',
   'https://devlabs-frontend.vercel.app',
-  'https://devlabs.vercel.app'
+  'https://devlabs.vercel.app',
+  'https://*.vercel.app' // Allow all Vercel subdomains
 ];
 
 app.use(cors({
@@ -41,9 +42,21 @@ app.use(cors({
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
     
+    // Allow localhost for development
+    if (origin.includes('localhost')) {
+      return callback(null, true);
+    }
+    
+    // Allow all Vercel domains
+    if (origin.includes('vercel.app')) {
+      return callback(null, true);
+    }
+    
+    // Allow specific domains
     if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
+      console.log('CORS blocked origin:', origin);
       callback(new Error('Not allowed by CORS'));
     }
   },
