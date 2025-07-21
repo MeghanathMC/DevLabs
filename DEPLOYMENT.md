@@ -47,7 +47,7 @@ This guide will help you deploy the DevLabs application with the backend on Rend
    CLOUDINARY_CLOUD_NAME=your-cloud-name
    CLOUDINARY_API_KEY=your-api-key
    CLOUDINARY_API_SECRET=your-api-secret
-   FRONTEND_URL=https://devlabs-frontend.vercel.app
+       FRONTEND_URL=https://devlabs-delta.vercel.app
    ```
 
 5. **Deploy:** Click "Create Web Service"
@@ -81,7 +81,7 @@ After deployment, you'll get a URL like: `https://devlabs-backend.onrender.com`
 
 ### 2. Get your Vercel URL
 
-After deployment, you'll get a URL like: `https://devlabs-frontend.vercel.app`
+After deployment, you'll get a URL like: `https://devlabs-delta.vercel.app`
 
 ## Environment Variables Setup
 

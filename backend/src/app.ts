@@ -31,6 +31,7 @@ app.use(helmet());
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
+  'https://devlabs-delta.vercel.app',
   'https://devlabs-frontend.vercel.app',
   'https://devlabs.vercel.app'
 ];
