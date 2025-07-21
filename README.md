@@ -169,6 +169,17 @@ mongod
 # Update MONGODB_URI in .env file
 ```
 
+### 7. Create Demo User (Optional)
+```bash
+cd backend
+npm run create-demo
+```
+
+This creates a demo account for testing:
+- **Email:** demo@example.com
+- **Password:** password
+- **Portfolio URL:** /portfolio/demo-user
+
 ## 📚 API Documentation
 
 ### Authentication Endpoints

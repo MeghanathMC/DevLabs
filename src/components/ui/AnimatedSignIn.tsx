@@ -51,22 +51,7 @@ const AnimatedSignIn: React.FC = () => {
           theme === 'dark' ? 'bg-bg-secondary shadow-xl shadow-indigo-500/10' : 'bg-white shadow-xl shadow-gray-200'
         } ${formVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
           
-          {/* Theme toggle */}
-          <button 
-            onClick={toggleTheme}
-            className={`absolute right-4 top-4 rounded-full p-2 transition-colors z-10 ${
-              theme === 'dark' 
-                ? 'bg-bg-tertiary text-indigo-400 hover:bg-indigo-500/10' 
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-            }`}
-            aria-label="Toggle theme"
-          >
-            {theme === 'dark' ? (
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="animate-pulse"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
-            ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
-            )}
-          </button>
+
 
           <div className="flex flex-col md:flex-row">
             {/* Left side - Statistics and Images Collage */}
@@ -145,12 +130,12 @@ const AnimatedSignIn: React.FC = () => {
                 transition: 'transform 0.6s ease-out, opacity 0.6s ease-out'
               }}
             >
-              <div className="flex justify-end mb-6">
+              <div className="text-center mb-6">
                 <p className={`text-sm ${theme === 'dark' ? 'text-text-secondary' : 'text-gray-600'}`}>
-                  Don't have an account? 
+                  Don't have an account?{' '}
                   <Link 
                     to="/register" 
-                    className={`ml-1 font-medium ${
+                    className={`font-medium ${
                       theme === 'dark' ? 'text-primary-400 hover:text-primary-500' : 'text-primary-600 hover:text-primary-500'
                     }`}
                   >

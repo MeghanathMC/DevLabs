@@ -90,14 +90,43 @@ backend/
    SMTP_PASS=your_app_password
    ```
 
-4. **Start Development Server**
+4. **Create Demo User (Optional)**
+   ```bash
+   npm run create-demo
+   ```
+   This creates a demo account with the following credentials:
+   - **Email:** demo@example.com
+   - **Password:** password
+   - **Portfolio URL:** /portfolio/demo-user
+
+5. **Start Development Server**
    ```bash
    npm run dev
    ```
 
    The API will be available at `http://localhost:5000`
 
-## 📚 API Documentation
+## 🎯 Demo Account
+
+For testing and demonstration purposes, you can use the demo account:
+
+### Demo Credentials
+- **Email:** `demo@example.com`
+- **Password:** `password`
+- **Portfolio URL:** `/portfolio/demo-user`
+
+### Creating Demo User
+```bash
+npm run create-demo
+```
+
+The demo user comes with:
+- Complete profile with sample data
+- Sample skills and social links
+- Public portfolio settings
+- Modern theme configuration
+
+## �� API Documentation
 
 ### Base URL
 ```

@@ -121,44 +121,47 @@ export const Dashboard: React.FC = () => {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
         <div>
           <h1 className="text-h1 text-text-primary">Dashboard</h1>
           <p className="mt-2 text-body text-text-secondary">Your central hub for projects, competitions, and achievements.</p>
         </div>
-        <div className="mt-4 sm:mt-0 flex space-x-3">
-          <Link to="/app/competitions">
-            <Button variant="secondary" size="sm">
+        <div className="flex flex-wrap gap-2 sm:gap-3">
+          <Link to="/app/competitions" className="flex-1 sm:flex-none">
+            <Button variant="secondary" size="sm" className="w-full sm:w-auto">
               <PlusIcon className="h-4 w-4 mr-2" />
-              Add Competition
+              <span className="hidden sm:inline">Add Competition</span>
+              <span className="sm:hidden">Competition</span>
             </Button>
           </Link>
-          <Link to="/app/projects">
-            <Button variant="secondary" size="sm">
+          <Link to="/app/projects" className="flex-1 sm:flex-none">
+            <Button variant="secondary" size="sm" className="w-full sm:w-auto">
               <PlusIcon className="h-4 w-4 mr-2" />
-              New Project
+              <span className="hidden sm:inline">New Project</span>
+              <span className="sm:hidden">Project</span>
             </Button>
           </Link>
-          <Link to="/app/achievements">
-            <Button size="sm">
+          <Link to="/app/achievements" className="flex-1 sm:flex-none">
+            <Button size="sm" className="w-full sm:w-auto">
               <TrophyIcon className="h-4 w-4 mr-2" />
-              Add Achievement
+              <span className="hidden sm:inline">Add Achievement</span>
+              <span className="sm:hidden">Achievement</span>
             </Button>
           </Link>
         </div>
       </div>
 
       {/* Quick Actions */}
-      <AnimatedContainer className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <AnimatedContainer className="grid-responsive">
         {quickActions.map((action, index) => (
           <Link key={index} to={action.href}>
-            <FeatureCard feature={action} className="h-full cursor-pointer" />
+            <FeatureCard feature={action} className="h-full cursor-pointer touch-target-enhanced" />
           </Link>
         ))}
       </AnimatedContainer>
 
       {/* Stats Grid */}
-      <AnimatedContainer delay={0.2} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <AnimatedContainer delay={0.2} className="grid-responsive">
         {statCards.map((stat, index) => (
           <Link key={index} to={stat.href}>
             <FeatureCard 
@@ -167,14 +170,14 @@ export const Dashboard: React.FC = () => {
                 icon: stat.icon,
                 description: stat.value.toString()
               }}
-              className="h-full cursor-pointer group bg-bg-secondary border border-indigo-500/20 hover:border-indigo-500/40 transition-all duration-300"
+              className="h-full cursor-pointer group bg-bg-secondary border border-indigo-500/20 hover:border-indigo-500/40 transition-all duration-300 touch-target-enhanced"
             >
-              <div className="flex flex-col items-center text-center p-2">
-                <div className={`p-3 rounded-lg ${stat.color} bg-opacity-10 mb-3`}>
-                  <stat.icon className={`h-8 w-8 ${stat.color.replace('bg-', 'text-')} group-hover:text-indigo-400 transition-colors`} />
+              <div className="flex flex-col items-center text-center p-3 sm:p-4">
+                <div className={`p-2 sm:p-3 rounded-lg ${stat.color} bg-opacity-10 mb-2 sm:mb-3`}>
+                  <stat.icon className={`h-6 w-6 sm:h-8 sm:w-8 ${stat.color.replace('bg-', 'text-')} group-hover:text-indigo-400 transition-colors`} />
                 </div>
-                <p className="text-sm font-medium text-text-tertiary mb-1">{stat.title}</p>
-                <p className="text-3xl font-bold text-text-primary group-hover:text-indigo-400 transition-colors">
+                <p className="text-xs sm:text-sm font-medium text-text-tertiary mb-1">{stat.title}</p>
+                <p className="text-2xl sm:text-3xl font-bold text-text-primary group-hover:text-indigo-400 transition-colors">
                   {stat.value}
                 </p>
               </div>
@@ -220,7 +223,7 @@ export const Dashboard: React.FC = () => {
       </div>
 
       {/* Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
         {/* Recent Projects */}
         <div className="card">
           <div className="p-6 border-b border-indigo-500/20">
@@ -307,17 +310,17 @@ export const Dashboard: React.FC = () => {
       </div>
 
       {/* Quick Actions */}
-      <div className="bg-gradient-to-r from-indigo-500 to-rose-500 rounded-xl p-8 text-white">
-        <div className="flex flex-col sm:flex-row items-center justify-between">
+      <div className="bg-gradient-to-r from-indigo-500 to-rose-500 rounded-lg sm:rounded-xl p-6 sm:p-8 text-white">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
           <div>
             <h3 className="text-h4 mb-2">Ready to showcase your work?</h3>
-            <p className="text-indigo-100">
+            <p className="text-indigo-100 text-sm sm:text-base">
               Create a stunning portfolio that highlights your best projects and achievements.
             </p>
           </div>
-          <div className="mt-4 sm:mt-0 flex space-x-3">
-            <Link to="/app/portfolio">
-              <Button variant="secondary" size="lg" className="bg-white text-indigo-600 border-white hover:bg-gray-50">
+          <div className="w-full sm:w-auto">
+            <Link to="/app/portfolio" className="block">
+              <Button variant="secondary" size="lg" className="w-full sm:w-auto bg-white text-indigo-600 border-white hover:bg-gray-50 touch-target-large">
                 Customize Portfolio
               </Button>
             </Link>

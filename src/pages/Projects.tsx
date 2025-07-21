@@ -79,37 +79,35 @@ export const Projects: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
         <div>
-          <h1 className="text-3xl font-bold text-text-primary">Projects</h1>
-          <p className="mt-2 text-text-secondary">Manage and showcase your hackathon projects.</p>
+          <h1 className="text-h1 text-text-primary">Projects</h1>
+          <p className="mt-2 text-body text-text-secondary">Manage and showcase your hackathon projects.</p>
         </div>
-        <Button onClick={() => setIsFormOpen(true)}>
+        <Button onClick={() => setIsFormOpen(true)} className="w-full sm:w-auto touch-target-enhanced">
           <PlusIcon className="h-4 w-4 mr-2" />
           Add Project
         </Button>
       </div>
 
       {/* Filters */}
-      <div className="card p-4">
-        <div className="flex flex-col sm:flex-row gap-4">
-          <div className="flex-1">
-            <div className="relative">
-              <MagnifyingGlassIcon className="h-5 w-5 absolute left-3 top-3 text-text-tertiary" />
-              <Input
-                placeholder="Search projects or technologies..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10"
-              />
-            </div>
+      <div className="card">
+        <div className="form-mobile">
+          <div className="relative">
+            <MagnifyingGlassIcon className="h-5 w-5 absolute left-3 top-3 text-text-tertiary" />
+            <Input
+              placeholder="Search projects or technologies..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-10"
+            />
           </div>
           <div className="flex items-center space-x-2">
             <FunnelIcon className="h-5 w-5 text-text-tertiary" />
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
-              className="bg-bg-tertiary border border-indigo-500/20 rounded-lg px-3 py-2 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-indigo-500/10 focus:border-indigo-500"
+              className="bg-bg-tertiary border border-indigo-500/20 rounded-lg px-3 py-2 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-indigo-500/10 focus:border-indigo-500 touch-manipulation"
             >
               <option value="all">All Status</option>
               <option value="completed">Completed</option>
@@ -121,14 +119,14 @@ export const Projects: React.FC = () => {
       </div>
 
       {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid-responsive">
         {filteredProjects.map((project) => (
-          <div key={project.id} className="card-interactive overflow-hidden">
+          <div key={project.id} className="card-interactive overflow-hidden touch-target-enhanced">
             <div className="relative">
               <img
                 src={project.images[0]}
                 alt={project.title}
-                className="w-full h-48 object-cover"
+                className="image-mobile"
               />
               {project.featured && (
                 <div className="absolute top-2 right-2 bg-amber-500 text-white px-2 py-1 rounded-lg text-xs font-medium">
@@ -146,9 +144,9 @@ export const Projects: React.FC = () => {
               </div>
             </div>
             
-            <div className="p-6">
-              <h3 className="text-lg font-semibold text-text-primary mb-2">{project.title}</h3>
-              <p className="text-text-secondary text-sm mb-4 line-clamp-2">{project.shortDescription}</p>
+            <div className="card-padding">
+              <h3 className="text-base sm:text-lg font-semibold text-text-primary mb-2">{project.title}</h3>
+              <p className="text-text-secondary text-sm mb-4 text-clamp-2">{project.shortDescription}</p>
               
               {/* Technologies */}
               <div className="flex flex-wrap gap-1 mb-4">
@@ -196,10 +194,10 @@ export const Projects: React.FC = () => {
 
               {/* Actions */}
               <div className="flex space-x-2">
-                <Button variant="outline" size="sm" className="flex-1">
+                <Button variant="outline" size="sm" className="flex-1 touch-target">
                   Edit
                 </Button>
-                <Button variant="ghost" size="sm">
+                <Button variant="ghost" size="sm" className="touch-target">
                   View
                 </Button>
               </div>
@@ -209,16 +207,16 @@ export const Projects: React.FC = () => {
       </div>
 
       {filteredProjects.length === 0 && (
-        <div className="text-center py-12">
-          <div className="max-w-md mx-auto">
+        <div className="text-center py-8 sm:py-12">
+          <div className="max-w-md mx-auto px-4">
             <h3 className="text-lg font-medium text-text-primary mb-2">No projects found</h3>
-            <p className="text-text-secondary mb-6">
+            <p className="text-text-secondary mb-6 text-sm sm:text-base">
               {searchTerm || filterStatus !== 'all' 
                 ? 'Try adjusting your search or filters.' 
                 : "You haven't added any projects yet. Start by adding your first hackathon project!"
               }
             </p>
-            <Button onClick={() => setIsFormOpen(true)}>
+            <Button onClick={() => setIsFormOpen(true)} className="w-full sm:w-auto touch-target-large">
               <PlusIcon className="h-4 w-4 mr-2" />
               Add Your First Project
             </Button>

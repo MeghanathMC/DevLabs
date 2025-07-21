@@ -39,63 +39,65 @@ export const Portfolio: React.FC = () => {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Portfolio</h1>
-          <p className="mt-2 text-gray-600">Customize and manage your public portfolio.</p>
+          <h1 className="text-h1 text-text-primary">Portfolio</h1>
+          <p className="mt-2 text-body text-text-secondary">Customize and manage your public portfolio.</p>
         </div>
-        <div className="mt-4 lg:mt-0 flex space-x-3">
-          <Button variant="outline">
+        <div className="flex flex-wrap gap-2 sm:gap-3">
+          <Button variant="outline" size="sm" className="flex-1 sm:flex-none touch-target">
             <Cog6ToothIcon className="h-4 w-4 mr-2" />
-            Settings
+            <span className="hidden sm:inline">Settings</span>
+            <span className="sm:hidden">Settings</span>
           </Button>
-          <Button variant="outline">
+          <Button variant="outline" size="sm" className="flex-1 sm:flex-none touch-target">
             <DocumentArrowDownIcon className="h-4 w-4 mr-2" />
-            Export PDF
+            <span className="hidden sm:inline">Export PDF</span>
+            <span className="sm:hidden">Export</span>
           </Button>
-          <Button>
+          <Button size="sm" className="flex-1 sm:flex-none touch-target">
             <EyeIcon className="h-4 w-4 mr-2" />
-            Preview
+            <span className="hidden sm:inline">Preview</span>
+            <span className="sm:hidden">Preview</span>
           </Button>
         </div>
       </div>
 
       {/* Portfolio URL Card */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-      <div className="card p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Your Portfolio URL</h2>
-        <h2 className="text-lg font-semibold text-text-primary mb-4">Your Portfolio URL</h2>
-        <div className="flex items-center space-x-4">
+      <div className="card">
+        <h2 className="text-h4 text-text-primary mb-4">Your Portfolio URL</h2>
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
           <div className="flex-1 bg-bg-tertiary rounded-lg p-3 border border-indigo-500/20">
-            <code className="text-indigo-400 font-mono text-sm">{portfolioUrl}</code>
+            <code className="text-indigo-400 font-mono text-xs sm:text-sm break-all">{portfolioUrl}</code>
           </div>
-          <Button variant="outline" size="sm">
-            <ShareIcon className="h-4 w-4 mr-2" />
-            Share
-          </Button>
-          <Button variant="outline" size="sm">
-            Copy Link
-          </Button>
+          <div className="flex gap-2 sm:gap-3">
+            <Button variant="outline" size="sm" className="flex-1 sm:flex-none touch-target">
+              <ShareIcon className="h-4 w-4 mr-2" />
+              Share
+            </Button>
+            <Button variant="outline" size="sm" className="flex-1 sm:flex-none touch-target">
+              Copy Link
+            </Button>
+          </div>
         </div>
-        <p className="text-sm text-text-tertiary mt-2">
+        <p className="text-sm text-text-tertiary mt-3">
           This is your public portfolio URL that you can share with recruiters and employers.
         </p>
       </div>
-      </div>
 
       {/* Portfolio Status */}
-      <div className="card p-6">
-        <h2 className="text-lg font-semibold text-text-primary mb-4">Portfolio Status</h2>
+      <div className="card">
+        <h2 className="text-h4 text-text-primary mb-4">Portfolio Status</h2>
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <span className="text-text-secondary">Visibility</span>
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-emerald-500/10 text-emerald-400">
+            <span className="text-text-secondary text-sm sm:text-base">Visibility</span>
+            <span className="inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-emerald-500/10 text-emerald-400">
               Public
             </span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-text-secondary">Last Updated</span>
-            <span className="text-text-primary">2 days ago</span>
+            <span className="text-text-secondary text-sm sm:text-base">Last Updated</span>
+            <span className="text-text-primary text-sm sm:text-base">2 days ago</span>
           </div>
           <div className="flex items-center justify-between">
             <span className="text-text-secondary">Template</span>
